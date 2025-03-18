@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ремонт электротранспорта - Velotes</title>  
-<!--     Тег <title> используется для отображения заголовка вкладки браузера или в результатах поиска. -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -114,12 +113,24 @@
             margin: 0;
             font-size: 0.9rem;
         }
+        .service-header {
+            cursor: pointer;
+            background-color: #ffe5e5;
+            padding: 10px;
+            border-left: 4px solid #ff0000;
+            margin: 10px 0;
+        }
+        .service-content {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #ccc;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
     <header>
         <img src="images/VELOTES_102.png" alt="Логотип Velotes" style="height: 90px;">
-<!--         <h1>Velotes</h1> -->
         <p>Ремонт электротранспорта и бытовой техники</p>
     </header>
     <nav>
@@ -134,10 +145,30 @@
     <section id="services">
         <h2>Услуги</h2>
         <ul>
-            <li>Диагностика</li>
-            <li>Ремонт двигателей</li>
-            <li>Замена батарей</li>
-            <li>Обслуживание</li>
+            <li>
+                <div class="service-header">Диагностика</div>
+                <div class="service-content" style="display: none;">
+                    Подробное описание диагностики...
+                </div>
+            </li>
+            <li>
+                <div class="service-header">Ремонт двигателей</div>
+                <div class="service-content" style="display: none;">
+                    Подробное описание ремонта двигателей...
+                </div>
+            </li>
+            <li>
+                <div class="service-header">Замена батарей</div>
+                <div class="service-content" style="display: none;">
+                    Подробное описание замены батарей...
+                </div>
+            </li>
+            <li>
+                <div class="service-header">Обслуживание</div>
+                <div class="service-content" style="display: none;">
+                    Подробное описание обслуживания...
+                </div>
+            </li>
         </ul>
     </section>
     <section id="contact">
@@ -162,6 +193,17 @@
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             alert(`Спасибо, ${name}! Мы свяжемся с вами по номеру ${phone} в ближайшее время.`);
+        });
+
+        document.querySelectorAll('.service-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                if (content.style.display === 'none' || content.style.display === '') {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
         });
     </script>
 </body>
