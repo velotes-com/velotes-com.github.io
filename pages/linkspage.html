@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow"> <!-- Не индексировать -->
     <title>Ремонт электротранспорта - Velotes</title>
     <link rel="icon" type="image/png" href="/images/favicon/favicon.png"> <!-- fiveicon logotype -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
@@ -120,6 +119,19 @@
             margin: 0;
             font-size: 0.9rem;
         }
+        .service-header {
+            cursor: pointer;
+            background-color: #ffe5e5;
+            padding: 10px;
+            border-left: 4px solid #ff0000;
+            margin: 10px 0;
+        }
+        .service-content {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #ccc;
+            margin-top: 5px;
+        }
         /* Стили для иконок */
         .contact-icons {
             display: inline-block;
@@ -139,57 +151,93 @@
         .fa-whatsapp { color: #25D366; }
         .fa-viber { color: #7360F2; }
         .fa-telegram { color: #0088CC; }
-        
-        /* Стили для списка ссылок */
-        .link-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .link-list li {
-            margin: 10px 0;
-        }
-        .link-list a {
-            display: block;
-            padding: 12px 15px;
-            background-color: #ffe5e5;
-            color: #333;
-            text-decoration: none;
-            border-left: 4px solid #ff0000;
-            transition: all 0.3s;
-        }
-        .link-list a:hover {
-            background-color: #ffcccc;
-            padding-left: 20px;
-        }
     </style>
 </head>
 <body>
     <header>
         <img src="images/logotype/VELOTES_v102_crop_sharpen.png" alt="Логотип Velotes" style="height: 100px;">
-        <p>Ремонт электротранспорта</p>
+        <p>Ремонт электротранспорта и бытовой техники</p>
     </header>
     <nav>
         <a href="#about">О нас</a>
-        <a href="#services">Полезные ссылки</a>
+        <a href="#services">Услуги</a>
         <a href="#contact">Контакты</a>
     </nav>
     <section id="about">
         <h2>О нас</h2>
-        <p>Мы специализируемся на ремонте электротранспорта: электросамокатов, велосипедов, гироскутеров и других устройств включая электронные блоки управления двигателей. Наша команда профессионалов гарантирует качественный ремонт и быстрое обслуживание.</p>
+        <p>Мы специализируемся на ремонте электротранспорта (электросамокатов, велосипедов, гироскутеров и других устройств включая электронные блоки управления двигателей) и бытовой техники (стиральные и посудомоечные машины, микроволновки, электронные блоки управления СМА/ПММ). Наша команда профессионалов гарантирует качественный ремонт и быстрое обслуживание.</p>
     </section>
     <section id="services">
-        <h2>Полезные ссылки</h2>
-        <ul class="link-list">
-            <li><a href="https://ru.banggood.com/Flipsky-FSESC-4_12-50A-SK8-ESC-5V-or-1_5A-BEC-Electric-Longboard-RC-Car-or-E-bike-or-E-scooter-p-1293459.html?akmClientCountry=BY&p=5P15033294300201512S&a=1742755384.7141&cur_warehouse=CN">p01 - banggood.com</a></li>
-            <li><a href="https://flipsky.net/collections/electronic-products">p02 - flipsky.net - colection electronic-products</a></li>
-            <li><a href="https://flipsky.net/collections/electronic-products/products/mini-fsesc6-8-60v-100a-with-heatsink">p03 - mini-fsesc6-8-60v-100a-with-heatsink</a></li>
-            <li><a href="https://vesc-project.com/calculators">p04 - VESC project calc</a></li>
-            <li><a href="https://www.youtube.com/watch?v=yd93p5GWPEE">p05 - VESC 4 от Flipsky - обзор и настройка</a></li>
-            <li><a href="https://youtu.be/AFM2ERTDuAE">p06 - How to Solder an SMD PCB (VESC board, for my Electric Bike)</a></li>
-            <li><a href="https://ardublock.ru/project/">p07 - arduino projects + info (pins & so on)</a></li>
-            <li><a href="/page8.html">Страница 8</a></li>
-            <li><a href="/page9.html">Страница 9</a></li>
-            <li><a href="/page10.html">Страница 10</a></li>
+        <h2>Услуги</h2>
+        <ul>
+            <li>
+                <div class="service-header">Диагностика</div>
+                <div class="service-content" style="display: none;">
+                    Проводим полную диагностику электротранспорта для выявления неисправностей, чтобы точно определить причину поломки и предложить оптимальное решение.
+                    <ul>
+                        <li>Проверка электроники и двигателя.</li>
+                        <li>Тестирование аккумулятора и зарядного устройства.</li>
+                        <li>Диагностика системы управления и датчиков.</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="service-header">Ремонт двигателей</div>
+                <div class="service-content" style="display: none;">
+                    Ремонтируем двигатели электросамокатов, велосипедов и гироскутеров. Заменяем изношенные детали, восстанавливаем работоспособность и обеспечиваем долговечность вашего транспорта.
+                    <ul>
+                        <li>Замена щеток, подшипников, датчиков холла и температуры и других компонентов.</li>
+                        <li>Восстановление обмоток путём перемотки двигателя.</li>
+                        <li>Настройка блока управления в соответствии с двигателем, если в блоке эта возможность реализована.</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="service-header">Замена и ремонт батарей</div>
+                <div class="service-content" style="display: none;">
+                    Предлагаем услуги по замене и ремонту аккумуляторов для электротранспорта. Используем качественные батареи и обеспечиваем их правильную установку и настройку.
+                    <ul>
+                        <li>Замена старых или неисправных батарей.</li>
+                        <li>Ремонт аккумуляторов (замена ячеек, восстановление емкости).</li>
+                        <li>Проверка и настройка системы зарядки (BMS).</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="service-header">Изготовление кастомных элементов</div>
+                <div class="service-content" style="display: none;">
+                    Изготавливаем кастомные элементы из пластика (а в некоторых случаях — из алюминия) на высокоточном ЧПУ станке с точностью позиционирования до 0,05 мм.
+                    Мы создаём детали, которые идеально подходят под ваши нужды, будь то уникальный дизайн или точные технические требования.
+                    <ul>
+			<!--   https://lasercut.ru/katalog/frezernyie-stanki/frezernyij-stanok-wattsan-0609-mini/  -->
+                        <li>Боксы для батареи — индивидуальные решения для вашего электробайка, которые обеспечивают надёжное крепление и стильный внешний вид.</li>
+                        <li>Брызговики — защита от грязи и воды, изготовленная с учётом особенностей вашего транспорта.</li>
+                        <li>Другие элементы — если вам нужно что-то уникальное, мы готовы воплотить ваши идеи в жизнь.</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="service-header">Обслуживание</div>
+                <div class="service-content" style="display: none;">
+                    Регулярное техническое обслуживание электротранспорта для поддержания его в отличном состоянии. Проводим чистку, смазку и проверку всех систем.
+                    <ul>
+                        <li>Чистка и смазка движущихся частей.</li>
+                        <li>Проверка и подтяжка креплений.</li>
+                        <li>Обновление программного обеспечения (если применимо).</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="service-header">Ремонт бытовой техники</div>
+                <div class="service-content" style="display: none;">
+                    Мы также занимаемся ремонтом бытовой техники, такой как стиральные машины, посудомоечные машины и микроволновки. Обеспечиваем качественный ремонт и замену неисправных деталей.
+                    <ul>
+                        <li>Диагностика и ремонт стиральных машин (замена насосов, ремней, подшипников).</li>
+                        <li>Устранение неисправностей посудомоечных машин (прочистка фильтров, замена помп).</li>
+                        <li>Ремонт микроволновок (замена магнетронов, диодов, предохранителей).</li>
+                    </ul>
+                </div>
+            </li>
         </ul>
     </section>
     <section id="contact">
@@ -216,5 +264,17 @@
     <footer>
         <p>&copy; 2025 Velotes. Все права защищены. Минск.</p>
     </footer>
+    <script>
+        document.querySelectorAll('.service-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                if (content.style.display === 'none' || content.style.display === '') {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
