@@ -331,24 +331,19 @@
                 copyright: "&copy; 2025 Velotes. All rights reserved. Minsk."
             }
         };
-
-        function detectLanguage() {
-            const savedLang = localStorage.getItem('preferredLang');
-            if (savedLang) return savedLang;
-            
-            const browserLang = navigator.language || navigator.userLanguage;
-            if (browserLang.startsWith('ru')) return 'ru';
-            
-            return 'en';
-        }
-
+        
         function applyLanguage(lang) {
+            // Сохраняем выбранный язык в localStorage
             localStorage.setItem('preferredLang', lang);
+            
+            // Устанавливаем атрибут lang для HTML
             document.documentElement.lang = lang;
             
+            // Получаем переводы для выбранного языка
             const t = translations[lang];
             if (!t) return;
             
+            // Применяем переводы ко всем элементам
             document.title = t.title;
             document.querySelector('header h1').textContent = t.headerTitle;
             document.querySelector('header p').textContent = t.headerSubtitle;
@@ -366,22 +361,47 @@
             
             document.getElementById('copyright').innerHTML = t.copyright;
             
+            // Обновляем активную кнопку языка
             document.querySelectorAll('.lang-option').forEach(link => {
                 link.classList.toggle('active', link.dataset.lang === lang);
             });
         }
-
-        // Инициализация языка
+        
+        // Определяем язык по умолчанию
+        function detectLanguage() {
+            // Проверяем сохранённый язык в localStorage
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang) return savedLang;
+            
+            // Определяем язык браузера
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang.startsWith('ru')) return 'ru';
+            
+            // По умолчанию английский
+            return 'en';
+        }
+        
+        // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', () => {
+            // Устанавливаем язык по умолчанию
             const defaultLang = detectLanguage();
             applyLanguage(defaultLang);
             
-            // Обработчики переключения языка
+            // Обработчики для переключения языка
             document.querySelectorAll('.lang-option').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    applyLanguage(link.dataset.lang);
+                    const lang = link.getAttribute('data-lang');
+                    applyLanguage(lang);
                 });
+            });
+        });
+        
+        // Обработчик аккордеона для услуг
+        document.querySelectorAll('.service-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.style.display = content.style.display === 'none' ? 'block' : 'none';
             });
         });
     </script>
