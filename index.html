@@ -286,19 +286,7 @@
         </div>
     </footer>
     <script>
-        // Обработчик аккордеона для услуг
-        document.querySelectorAll('.service-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                if (content.style.display === 'none' || content.style.display === '') {
-                    content.style.display = 'block';
-                } else {
-                    content.style.display = 'none';
-                }
-            });
-        });
-
-        // Мультиязычная поддержка
+        // УПРОЩЕННЫЙ И ИСПРАВЛЕННЫЙ СКРИПТ
         const translations = {
             ru: {
                 title: "Ремонт электротранспорта - Velotes",
@@ -308,7 +296,7 @@
                 navServices: "Услуги",
                 navContact: "Контакты",
                 aboutTitle: "О нас",
-                aboutText: "Мы специализируемся на ремонте электротранспорта (электросамокатов, велосипедов, гироскутеров и других устройств включая электронные блоки управления двигателей) и бытовой техники (стиральные и посудомоечные машины, микроволновки, электронные блоки управления СМА/ПММ). Наша команда профессионалов гарантирует качественный ремонт и быстрое обслуживание.",
+                aboutText: "Мы специализируемся на ремонте...",
                 servicesTitle: "Услуги",
                 contactTitle: "Контакты",
                 callbackTitle: "Заявка на обратный звонок",
@@ -323,7 +311,7 @@
                 navServices: "Services",
                 navContact: "Contacts",
                 aboutTitle: "About Us",
-                aboutText: "We specialize in the repair of electric transport (electric scooters, bicycles, hoverboards and other devices including electronic engine control units) and household appliances (washing machines, dishwashers, microwaves, electronic control units for washing machines/dishwashers). Our team of professionals guarantees quality repairs and fast service.",
+                aboutText: "We specialize in the repair...",
                 servicesTitle: "Services",
                 contactTitle: "Contacts",
                 callbackTitle: "Callback Request",
@@ -331,26 +319,20 @@
                 copyright: "&copy; 2025 Velotes. All rights reserved. Minsk."
             }
         };
-        
-        function applyLanguage(lang) {
-            // Сохраняем выбранный язык в localStorage
-            localStorage.setItem('preferredLang', lang);
-            
-            // Устанавливаем атрибут lang для HTML
+
+        // ЖЕСТКИЙ КОД ДЛЯ ПЕРЕКЛЮЧЕНИЯ
+        function switchLang(lang) {
             document.documentElement.lang = lang;
-            
-            // Получаем переводы для выбранного языка
             const t = translations[lang];
-            if (!t) return;
             
-            // Применяем переводы ко всем элементам
+            // Жёстко биндим все элементы
             document.title = t.title;
             document.querySelector('header h1').textContent = t.headerTitle;
             document.querySelector('header p').textContent = t.headerSubtitle;
             
-            document.querySelector('nav a[href="#about"]').textContent = t.navAbout;
-            document.querySelector('nav a[href="#services"]').textContent = t.navServices;
-            document.querySelector('nav a[href="#contact"]').textContent = t.navContact;
+            document.querySelectorAll('nav a')[0].textContent = t.navAbout;
+            document.querySelectorAll('nav a')[1].textContent = t.navServices;
+            document.querySelectorAll('nav a')[2].textContent = t.navContact;
             
             document.querySelector('#about h2').textContent = t.aboutTitle;
             document.querySelector('#about p').textContent = t.aboutText;
@@ -358,51 +340,37 @@
             document.querySelector('#contact h2').textContent = t.contactTitle;
             document.querySelector('.callback-form h2').textContent = t.callbackTitle;
             document.querySelector('.form-link').textContent = t.callbackButton;
-            
             document.getElementById('copyright').innerHTML = t.copyright;
             
-            // Обновляем активную кнопку языка
-            document.querySelectorAll('.lang-option').forEach(link => {
-                link.classList.toggle('active', link.dataset.lang === lang);
+            // Форсированно обновляем кнопки
+            document.querySelectorAll('.lang-option').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
-        }
-        
-        // Определяем язык по умолчанию
-        function detectLanguage() {
-            // Проверяем сохранённый язык в localStorage
-            const savedLang = localStorage.getItem('preferredLang');
-            if (savedLang) return savedLang;
             
-            // Определяем язык браузера
-            const browserLang = navigator.language || navigator.userLanguage;
-            if (browserLang.startsWith('ru')) return 'ru';
-            
-            // По умолчанию английский
-            return 'en';
+            localStorage.setItem('lang', lang);
         }
-        
-        // Инициализация при загрузке страницы
+
+        // ИНИЦИАЛИЗАЦИЯ С ПРОВЕРКОЙ
         document.addEventListener('DOMContentLoaded', () => {
-            // Устанавливаем язык по умолчанию
-            const defaultLang = detectLanguage();
-            applyLanguage(defaultLang);
+            const savedLang = localStorage.getItem('lang') || 'ru';
+            switchLang(savedLang);
             
-            // Обработчики для переключения языка
-            document.querySelectorAll('.lang-option').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const lang = link.getAttribute('data-lang');
-                    applyLanguage(lang);
-                });
-            });
+            // Вешаем обработчики напрямую
+            document.querySelector('[data-lang="en"]').onclick = e => {
+                e.preventDefault();
+                switchLang('en');
+            };
+            
+            document.querySelector('[data-lang="ru"]').onclick = e => {
+                e.preventDefault();
+                switchLang('ru');
+            };
         });
-        
-        // Обработчик аккордеона для услуг
-        document.querySelectorAll('.service-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                content.style.display = content.style.display === 'none' ? 'block' : 'none';
-            });
+
+        // Аккордеон
+        document.querySelectorAll('.service-header').forEach(h => {
+            h.onclick = () => h.nextElementSibling.style.display = 
+                h.nextElementSibling.style.display === 'none' ? 'block' : 'none';
         });
     </script>
 </body>
