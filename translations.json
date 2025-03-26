@@ -1,0 +1,32 @@
+﻿{
+    "ru": {
+        "title": "Ремонт электротранспорта - Velotes",
+        "headerTitle": "Velotes",
+        "headerSubtitle": "Ремонт электротранспорта и бытовой техники",
+        "navAbout": "О нас",
+        "navServices": "Услуги",
+        "navContact": "Контакты",
+        "aboutTitle": "О нас",
+        "aboutText": "Мы специализируемся на ремонте электротранспорта (электросамокатов, велосипедов, гироскутеров и других устройств включая электронные блоки управления двигателей) и бытовой техники (стиральные и посудомоечные машины, микроволновки, электронные блоки управления СМА/ПММ). Наша команда профессионалов гарантирует качественный ремонт и быстрое обслуживание.",
+        "servicesTitle": "Услуги",
+        "contactTitle": "Контакты",
+        "callbackTitle": "Заявка на обратный звонок",
+        "callbackButton": "Заполнить форму",
+        "copyright": "&copy; 2025 Velotes. Все права защищены. Минск."
+    },
+    "en": {
+        "title": "Electric Transport Repair - Velotes",
+        "headerTitle": "Velotes",
+        "headerSubtitle": "Electric transport and household appliances repair",
+        "navAbout": "About Us",
+        "navServices": "Services",
+        "navContact": "Contacts",
+        "aboutTitle": "About Us",
+        "aboutText": "We specialize in the repair of electric transport (electric scooters, bicycles, hoverboards and other devices including electronic engine control units) and household appliances (washing machines, dishwashers, microwaves, electronic control units for washing machines/dishwashers). Our team of professionals guarantees quality repairs and fast service.",
+        "servicesTitle": "Services",
+        "contactTitle": "Contacts",
+        "callbackTitle": "Callback Request",
+        "callbackButton": "Fill the Form",
+        "copyright": "&copy; 2025 Velotes. All rights reserved. Minsk."
+    }
+}
