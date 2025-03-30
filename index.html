@@ -171,7 +171,10 @@
         <h2>Услуги</h2>
         <ul>
             <li>
-                <div class="service-header">Диагностика</div>
+                <div class="service-header">
+			Диагностика
+			<img src="images/gallery_work/IMG-01.jpg" alt="Диагностика" onclick="showImage(this)">
+		</div>
                 <div class="service-content" style="display: none;">
                     Проводим полную диагностику электротранспорта для выявления неисправностей, чтобы точно определить причину поломки и предложить оптимальное решение.
                     <ul>
@@ -265,6 +268,15 @@
         <p>&copy; 2025 Velotes. Все права защищены. Минск.</p>
     </footer>
     <script>
+	    // --- block for image each point in Services(Услуги) --- begin 
+	function showImage(imgElement) {
+            document.getElementById('modalImg').src = imgElement.src;
+            document.getElementById('imageModal').style.display = 'block';
+        }
+        function closeImage() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+	    // --- block for image each point in Services(Услуги) --- end 
         document.querySelectorAll('.service-header').forEach(header => {
             header.addEventListener('click', () => {
                 const content = header.nextElementSibling;
