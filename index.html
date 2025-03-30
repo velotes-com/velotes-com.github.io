@@ -173,7 +173,16 @@
             <li>
                 <div class="service-header">
 			Диагностика
-			<img src="images/gallery_work/IMG-01.jpg" alt="Диагностика" onclick="showImage(this)">
+			<!-- HTML с изображением -->
+			<img src="images/gallery_work/IMG-01.jpg" 
+			     class="thumbnail" 
+			     alt="Диагностика"
+			     onclick="showImage(this)">
+			
+			<!-- Модальное окно -->
+			<div id="imageModal" class="modal" onclick="closeModal()">
+			    <img id="expandedImage" class="modal-content">
+			</div>
 		</div>
                 <div class="service-content" style="display: none;">
                     Проводим полную диагностику электротранспорта для выявления неисправностей, чтобы точно определить причину поломки и предложить оптимальное решение.
@@ -269,13 +278,18 @@
     </footer>
     <script>
 	    // --- block for image each point in Services(Услуги) --- begin 
-	function showImage(imgElement) {
-            document.getElementById('modalImg').src = imgElement.src;
-            document.getElementById('imageModal').style.display = 'block';
-        }
-        function closeImage() {
-            document.getElementById('imageModal').style.display = 'none';
-        }
+	function showImage(img) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("expandedImage");
+        
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+	}
+	
+	function closeModal() {
+	document.getElementById("imageModal").style.display = "none";
+	}
 	    // --- block for image each point in Services(Услуги) --- end 
         document.querySelectorAll('.service-header').forEach(header => {
             header.addEventListener('click', () => {
