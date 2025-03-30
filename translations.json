@@ -1,0 +1,32 @@
+﻿{
+    "ru": {
+        "title": "Ремонт электротранспорта - Velotes",
+        "headerTitle": "Velotes",
+        "headerSubtitle": "Ремонт электротранспорта и бытовой техники",
+        "navAbout": "О нас",
+        "navServices": "Услуги",
+        "navContact": "Контакты",
+        "aboutTitle": "О нас",
+        "aboutText": "Мы специализируемся на ремонте электротранспорта...",
+        "servicesTitle": "Услуги",
+        "contactTitle": "Контакты",
+        "callbackTitle": "Заявка на обратный звонок",
+        "callbackButton": "Заполнить форму",
+        "copyright": "&copy; 2025 Velotes. Все права защищены. Минск."
+    },
+    "en": {
+        "title": "Electric Transport Repair - Velotes",
+        "headerTitle": "Velotes",
+        "headerSubtitle": "Electric transport and household appliances repair",
+        "navAbout": "About Us",
+        "navServices": "Services",
+        "navContact": "Contacts",
+        "aboutTitle": "About Us",
+        "aboutText": "We specialize in the repair of electric transport...",
+        "servicesTitle": "Services",
+        "contactTitle": "Contacts",
+        "callbackTitle": "Callback Request",
+        "callbackButton": "Fill the Form",
+        "copyright": "&copy; 2025 Velotes. All rights reserved. Minsk."
+    }
+}
