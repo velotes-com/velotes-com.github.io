@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ремонт электротранспорта - Velotes</title>
-    <link rel="icon" type="image/png" href="/images/favicon/favicon.png">  <!-- fiveicon logotype -->
+    <link rel="icon" type="image/png" href="/images/favicon/favicon.png"> <!-- fiveicon logotype -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">  <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Font Awesome -->
     <style>
         body {
             font-family: 'Oswald', sans-serif;
@@ -18,7 +18,7 @@
         }
         h1, h2, h3 {
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            letter-spacing: 3px;  /* Растягиваем буквы */
+            letter-spacing: 3px; /* Растягиваем буквы */
         }
         header {
             background-color: #000;
@@ -33,13 +33,13 @@
             margin: 10px 0 0;
             font-size: 2.5rem;
             color: #ff0000;
-            letter-spacing: 2px;  /* Растягиваем буквы */
+            letter-spacing: 2px; /* Растягиваем буквы */
         }
         header p {
             margin: 10px 0 0;
             font-size: 1.2rem;
             color: #ff0000;
-            letter-spacing: 1.5px;  /* Растягиваем буквы */
+            letter-spacing: 1.5px; /* Растягиваем буквы */
         }
         nav {
             background-color: #333;
@@ -52,7 +52,7 @@
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
-            letter-spacing: 2px;  /* Растягиваем буквы */
+            letter-spacing: 2px; /* Растягиваем буквы */
         }
         nav a:hover {
             color: #ff0000;
@@ -132,6 +132,7 @@
             border-left: 4px solid #ccc;
             margin-top: 5px;
         }
+        /* Стили для иконок */
         .contact-icons {
             display: inline-block;
             margin-left: 10px;
@@ -150,25 +151,6 @@
         .fa-whatsapp { color: #25D366; }
         .fa-viber { color: #7360F2; }
         .fa-telegram { color: #0088CC; }
-        
-        /* Новые стили для переключателя языка */
-        .lang-switcher {
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
-        .lang-switcher a {
-            color: #ff0000;
-            text-decoration: none;
-            margin: 0 5px;
-            transition: opacity 0.3s;
-        }
-        .lang-switcher a:hover {
-            opacity: 0.8;
-        }
-        .lang-switcher a.active {
-            font-weight: bold;
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
@@ -227,6 +209,7 @@
                     Изготавливаем кастомные элементы из пластика (а в некоторых случаях — из алюминия) на высокоточном ЧПУ станке с точностью позиционирования до 0,05 мм.
                     Мы создаём детали, которые идеально подходят под ваши нужды, будь то уникальный дизайн или точные технические требования.
                     <ul>
+			<!--   https://lasercut.ru/katalog/frezernyie-stanki/frezernyij-stanok-wattsan-0609-mini/  -->
                         <li>Боксы для батареи — индивидуальные решения для вашего электробайка, которые обеспечивают надёжное крепление и стильный внешний вид.</li>
                         <li>Брызговики — защита от грязи и воды, изготовленная с учётом особенностей вашего транспорта.</li>
                         <li>Другие элементы — если вам нужно что-то уникальное, мы готовы воплотить ваши идеи в жизнь.</li>
@@ -279,14 +262,9 @@
         <a href="https://forms.gle/H95podaSqG37QQ4x9" target="_blank" class="form-link">Заполнить форму</a>
     </section>
     <footer>
-        <p id="copyright">&copy; 2025 Velotes. Все права защищены. Минск.</p>
-        <div class="lang-switcher">
-            <a href="#" class="lang-option active" data-lang="ru">Русский</a> | 
-            <a href="#" class="lang-option" data-lang="en">English</a>
-        </div>
+        <p>&copy; 2025 Velotes. Все права защищены. Минск.</p>
     </footer>
     <script>
-        // Обработчик аккордеона для услуг
         document.querySelectorAll('.service-header').forEach(header => {
             header.addEventListener('click', () => {
                 const content = header.nextElementSibling;
@@ -297,43 +275,82 @@
                 }
             });
         });
+    <script>
+        // Обработчик аккордеона для услуг (без изменений)
+        document.querySelectorAll('.service-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            });
+        });
 
-        // Мультиязычная поддержка
-        const translations = {
-            ru: {
-                title: "Ремонт электротранспорта - Velotes",
-                headerTitle: "Velotes",
-                headerSubtitle: "Ремонт электротранспорта и бытовой техники",
-                navAbout: "О нас",
-                navServices: "Услуги",
-                navContact: "Контакты",
-                aboutTitle: "О нас",
-                aboutText: "Мы специализируемся на ремонте электротранспорта (электросамокатов, велосипедов, гироскутеров и других устройств включая электронные блоки управления двигателей) и бытовой техники (стиральные и посудомоечные машины, микроволновки, электронные блоки управления СМА/ПММ). Наша команда профессионалов гарантирует качественный ремонт и быстрое обслуживание.",
-                servicesTitle: "Услуги",
-                contactTitle: "Контакты",
-                callbackTitle: "Заявка на обратный звонок",
-                callbackButton: "Заполнить форму",
-                copyright: "&copy; 2025 Velotes. Все права защищены. Минск."
-            },
-            en: {
-                title: "Electric Transport Repair - Velotes",
-                headerTitle: "Velotes",
-                headerSubtitle: "Electric transport and household appliances repair",
-                navAbout: "About Us",
-                navServices: "Services",
-                navContact: "Contacts",
-                aboutTitle: "About Us",
-                aboutText: "We specialize in the repair of electric transport (electric scooters, bicycles, hoverboards and other devices including electronic engine control units) and household appliances (washing machines, dishwashers, microwaves, electronic control units for washing machines/dishwashers). Our team of professionals guarantees quality repairs and fast service.",
-                servicesTitle: "Services",
-                contactTitle: "Contacts",
-                callbackTitle: "Callback Request",
-                callbackButton: "Fill the Form",
-                copyright: "&copy; 2025 Velotes. All rights reserved. Minsk."
+        // Загрузка переводов из внешнего файла
+        let translations = {}; // Глобальная переменная для хранения переводов
+
+        async function loadTranslations() {
+            try {
+                const response = await fetch('translations.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load translations');
+                }
+                translations = await response.json();
+                initializeLanguage();
+            } catch (error) {
+                console.error('Error loading translations:', error);
+                // Загружаем встроенные переводы как fallback
+                translations = {
+                    ru: {
+                        title: "Ремонт электротранспорта - Velotes",
+                        // ... (все остальные переводы для ru)
+                    },
+                    en: {
+                        title: "Electric Transport Repair - Velotes",
+                        // ... (все остальные переводы для en)
+                    }
+                };
+                initializeLanguage();
             }
-        };
+        }
 
+        // Функция применения языка
+        function applyLanguage(lang) {
+            if (!translations[lang]) return;
+            
+            // Сохраняем выбранный язык
+            localStorage.setItem('siteLang', lang);
+            document.documentElement.lang = lang;
+            
+            const t = translations[lang];
+            
+            // Обновляем элементы страницы
+            const elementsToTranslate = {
+                'title': () => document.title = t.title,
+                'header h1': () => document.querySelector('header h1').textContent = t.headerTitle,
+                'header p': () => document.querySelector('header p').textContent = t.headerSubtitle,
+                'nav a[href="#about"]': () => document.querySelector('nav a[href="#about"]').textContent = t.navAbout,
+                'nav a[href="#services"]': () => document.querySelector('nav a[href="#services"]').textContent = t.navServices,
+                'nav a[href="#contact"]': () => document.querySelector('nav a[href="#contact"]').textContent = t.navContact,
+                '#about h2': () => document.querySelector('#about h2').textContent = t.aboutTitle,
+                '#about p': () => document.querySelector('#about p').textContent = t.aboutText,
+                '#services h2': () => document.querySelector('#services h2').textContent = t.servicesTitle,
+                '#contact h2': () => document.querySelector('#contact h2').textContent = t.contactTitle,
+                '.callback-form h2': () => document.querySelector('.callback-form h2').textContent = t.callbackTitle,
+                '.form-link': () => document.querySelector('.form-link').textContent = t.callbackButton,
+                '#copyright': () => document.getElementById('copyright').innerHTML = t.copyright
+            };
+
+            // Применяем все переводы
+            Object.values(elementsToTranslate).forEach(translateFn => translateFn());
+            
+            // Обновляем кнопки переключения языка
+            document.querySelectorAll('.lang-option').forEach(link => {
+                link.classList.toggle('active', link.dataset.lang === lang);
+            });
+        }
+
+        // Определение языка по умолчанию
         function detectLanguage() {
-            const savedLang = localStorage.getItem('preferredLang');
+            const savedLang = localStorage.getItem('siteLang');
             if (savedLang) return savedLang;
             
             const browserLang = navigator.language || navigator.userLanguage;
@@ -342,48 +359,29 @@
             return 'en';
         }
 
-        function applyLanguage(lang) {
-            localStorage.setItem('preferredLang', lang);
-            document.documentElement.lang = lang;
-            
-            const t = translations[lang];
-            if (!t) return;
-            
-            document.title = t.title;
-            document.querySelector('header h1').textContent = t.headerTitle;
-            document.querySelector('header p').textContent = t.headerSubtitle;
-            
-            document.querySelector('nav a[href="#about"]').textContent = t.navAbout;
-            document.querySelector('nav a[href="#services"]').textContent = t.navServices;
-            document.querySelector('nav a[href="#contact"]').textContent = t.navContact;
-            
-            document.querySelector('#about h2').textContent = t.aboutTitle;
-            document.querySelector('#about p').textContent = t.aboutText;
-            document.querySelector('#services h2').textContent = t.servicesTitle;
-            document.querySelector('#contact h2').textContent = t.contactTitle;
-            document.querySelector('.callback-form h2').textContent = t.callbackTitle;
-            document.querySelector('.form-link').textContent = t.callbackButton;
-            
-            document.getElementById('copyright').innerHTML = t.copyright;
-            
-            document.querySelectorAll('.lang-option').forEach(link => {
-                link.classList.toggle('active', link.dataset.lang === lang);
-            });
-        }
-
-        // Инициализация языка
-        document.addEventListener('DOMContentLoaded', () => {
+        // Инициализация языка после загрузки переводов
+        function initializeLanguage() {
             const defaultLang = detectLanguage();
             applyLanguage(defaultLang);
             
-            // Обработчики переключения языка
+            // Обработчики для кнопок переключения языка
             document.querySelectorAll('.lang-option').forEach(link => {
-                link.addEventListener('click', (e) => {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    applyLanguage(link.dataset.lang);
+                    const lang = this.dataset.lang;
+                    applyLanguage(lang);
+                    
+                    // Плавный скролл к верху страницы
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 });
             });
-        });
+        }
+
+        // Запускаем загрузку переводов при загрузке страницы
+        document.addEventListener('DOMContentLoaded', loadTranslations);
     </script>
 </body>
 </html>
