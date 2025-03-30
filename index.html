@@ -171,7 +171,7 @@
         }
     </style>
 </head>
-// ----------------------------------00-----------------------------------------
+<!-- // ----------------------------------00----------------------------------------- -->
 <body>
     <header>
         <img src="images/logotype/VELOTES_v102_crop_sharpen.png" alt="Логотип Velotes" style="height: 100px;">
@@ -286,114 +286,152 @@
             <a href="#" class="lang-option" data-lang="en">English</a>
         </div>
     </footer>
-// ----------------------------------01-----------------------------------------
+<!-- // ----------------------------------01----------------------------------------- -->
     <script>
-        // Обработчик аккордеона для услуг (без изменений)
-        document.querySelectorAll('.service-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                content.style.display = content.style.display === 'none' ? 'block' : 'none';
-            });
+    // Обработчик аккордеона для услуг (без изменений)
+    document.querySelectorAll('.service-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling;
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
         });
+    });
 
-        // Загрузка переводов из внешнего файла
-        let translations = {}; // Глобальная переменная для хранения переводов
+    // Загрузка переводов из внешнего файла
+    let translations = {}; // Глобальная переменная для хранения переводов
 
-        async function loadTranslations() {
-            try {
-                const response = await fetch('/translations.json');
-                if (!response.ok) {
-                    throw new Error('Failed to load translations');
-                }
-                translations = await response.json();
-                initializeLanguage();
-            } catch (error) {
-                console.error('Error loading translations:', error);
-                // Загружаем встроенные переводы как fallback
-                translations = {
-                    ru: {
-                        title: "Ремонт электротранспорта - Velotes",
-                        // ... (все остальные переводы для ru)
-                    },
-                    en: {
-                        title: "Electric Transport Repair - Velotes",
-                        // ... (все остальные переводы для en)
-                    }
-                };
-                initializeLanguage();
+    async function loadTranslations() {
+        try {
+            const response = await fetch('translations.json');
+            if (!response.ok) {
+                throw new Error('Failed to load translations');
             }
-        }
-
-        // Функция применения языка
-        function applyLanguage(lang) {
-            if (!translations[lang]) return;
-            
-            // Сохраняем выбранный язык
-            localStorage.setItem('siteLang', lang);
-            document.documentElement.lang = lang;
-            
-            const t = translations[lang];
-            
-            // Обновляем элементы страницы
-            const elementsToTranslate = {
-                'title': () => document.title = t.title,
-                'header h1': () => document.querySelector('header h1').textContent = t.headerTitle,
-                'header p': () => document.querySelector('header p').textContent = t.headerSubtitle,
-                'nav a[href="#about"]': () => document.querySelector('nav a[href="#about"]').textContent = t.navAbout,
-                'nav a[href="#services"]': () => document.querySelector('nav a[href="#services"]').textContent = t.navServices,
-                'nav a[href="#contact"]': () => document.querySelector('nav a[href="#contact"]').textContent = t.navContact,
-                '#about h2': () => document.querySelector('#about h2').textContent = t.aboutTitle,
-                '#about p': () => document.querySelector('#about p').textContent = t.aboutText,
-                '#services h2': () => document.querySelector('#services h2').textContent = t.servicesTitle,
-                '#contact h2': () => document.querySelector('#contact h2').textContent = t.contactTitle,
-                '.callback-form h2': () => document.querySelector('.callback-form h2').textContent = t.callbackTitle,
-                '.form-link': () => document.querySelector('.form-link').textContent = t.callbackButton,
-                '#copyright': () => document.getElementById('copyright').innerHTML = t.copyright
+            translations = await response.json();
+            initializeLanguage();
+        } catch (error) {
+            console.error('Error loading translations:', error);
+            // Загружаем встроенные переводы как fallback
+            translations = {
+                ru: {
+                    title: "Ремонт электротранспорта - Velotes",
+                    headerTitle: "Velotes",
+                    headerSubtitle: "Ремонт электротранспорта и бытовой техники",
+                    navAbout: "О нас",
+                    navServices: "Услуги",
+                    navContact: "Контакты",
+                    aboutTitle: "О нас",
+                    aboutText: "Мы специализируемся на ремонте электротранспорта (электросамокатов, велосипедов, гироскутеров и других устройств включая электронные блоки управления двигателей) и бытовой техники (стиральные и посудомоечные машины, микроволновки, электронные блоки управления СМА/ПММ). Наша команда профессионалов гарантирует качественный ремонт и быстрое обслуживание.",
+                    servicesTitle: "Услуги",
+                    contactTitle: "Контакты",
+                    callbackTitle: "Заявка на обратный звонок",
+                    callbackButton: "Заполнить форму",
+                    copyright: "&copy; 2025 Velotes. Все права защищены. Минск."
+                },
+                en: {
+                    title: "Electric Transport Repair - Velotes",
+                    headerTitle: "Velotes",
+                    headerSubtitle: "Electric transport and household appliances repair",
+                    navAbout: "About Us",
+                    navServices: "Services",
+                    navContact: "Contacts",
+                    aboutTitle: "About Us",
+                    aboutText: "We specialize in the repair of electric transport (electric scooters, bicycles, hoverboards and other devices including electronic engine control units) and household appliances (washing machines, dishwashers, microwaves, electronic control units for washing machines/dishwashers). Our team of professionals guarantees quality repairs and fast service.",
+                    servicesTitle: "Services",
+                    contactTitle: "Contacts",
+                    callbackTitle: "Callback Request",
+                    callbackButton: "Fill the Form",
+                    copyright: "&copy; 2025 Velotes. All rights reserved. Minsk."
+                }
             };
-
-            // Применяем все переводы
-            Object.values(elementsToTranslate).forEach(translateFn => translateFn());
-            
-            // Обновляем кнопки переключения языка
-            document.querySelectorAll('.lang-option').forEach(link => {
-                link.classList.toggle('active', link.dataset.lang === lang);
-            });
+            initializeLanguage();
         }
+    }
 
-        // Определение языка по умолчанию
-        function detectLanguage() {
-            const savedLang = localStorage.getItem('siteLang');
-            if (savedLang) return savedLang;
-            
-            const browserLang = navigator.language || navigator.userLanguage;
-            if (browserLang.startsWith('ru')) return 'ru';
-            
-            return 'en';
-        }
+    // Функция применения языка
+    function applyLanguage(lang) {
+        if (!translations[lang]) return;
+        
+        // Сохраняем выбранный язык
+        localStorage.setItem('siteLang', lang);
+        document.documentElement.lang = lang;
+        
+        const t = translations[lang];
+        
+        // Обновляем элементы страницы
+        document.title = t.title;
+        document.querySelector('header h1').textContent = t.headerTitle;
+        document.querySelector('header p').textContent = t.headerSubtitle;
+        
+        // Навигация
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks[0].textContent = t.navAbout;
+        navLinks[1].textContent = t.navServices;
+        navLinks[2].textContent = t.navContact;
+        
+        // Секции
+        document.querySelector('#about h2').textContent = t.aboutTitle;
+        document.querySelector('#about p').textContent = t.aboutText;
+        document.querySelector('#services h2').textContent = t.servicesTitle;
+        document.querySelector('#contact h2').textContent = t.contactTitle;
+        
+        // Форма
+        document.querySelector('.callback-form h2').textContent = t.callbackTitle;
+        document.querySelector('.form-link').textContent = t.callbackButton;
+        
+        // Копирайт
+        document.getElementById('copyright').innerHTML = t.copyright;
+        
+        // Переключатели языка
+        document.querySelectorAll('.lang-option').forEach(link => {
+            link.classList.toggle('active', link.dataset.lang === lang);
+        });
+    }
 
-        // Инициализация языка после загрузки переводов
-        function initializeLanguage() {
-            const defaultLang = detectLanguage();
-            applyLanguage(defaultLang);
-            
-            // Обработчики для кнопок переключения языка
-            document.querySelectorAll('.lang-option').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const lang = this.dataset.lang;
-                    applyLanguage(lang);
-                    
-                    // Плавный скролл к верху страницы
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            });
-        }
+    // Определение языка по умолчанию
+    function detectLanguage() {
+        const savedLang = localStorage.getItem('siteLang');
+        if (savedLang) return savedLang;
+        
+        const browserLang = navigator.language || navigator.userLanguage;
+        if (browserLang.startsWith('ru')) return 'ru';
+        
+        return 'en';
+    }
 
-        // Запускаем загрузку переводов при загрузке страницы
-        document.addEventListener('DOMContentLoaded', loadTranslations);
-    </script>
+    // Инициализация языка после загрузки переводов
+    function initializeLanguage() {
+        const defaultLang = detectLanguage();
+        applyLanguage(defaultLang);
+        
+        // Обработчики для кнопок переключения языка
+        document.querySelectorAll('.lang-option').forEach(link => {
+            // Удаляем предыдущие обработчики, если они есть
+            link.removeEventListener('click', handleLanguageSwitch);
+            
+            // Добавляем новый обработчик
+            link.addEventListener('click', handleLanguageSwitch);
+        });
+    }
+
+    // Обработчик переключения языка
+    function handleLanguageSwitch(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const lang = this.dataset.lang;
+        applyLanguage(lang);
+        
+        // Плавный скролл к верху страницы без изменения URL
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
+        // Возвращаем false для отмены стандартного поведения ссылки
+        return false;
+    }
+
+    // Запускаем загрузку переводов при загрузке страницы
+    document.addEventListener('DOMContentLoaded', loadTranslations);
+</script>
 </body>
 </html>
