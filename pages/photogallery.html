@@ -243,12 +243,19 @@
         .gallery-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
         .gallery-row img { 
             width: 100px; 
-            height: 100px; /* Фиксируем высоту */
-            object-fit: cover; /* Сохраняем пропорции и обрезаем лишнее */
+            height: 90px; /* Немного уменьшаем высоту */
+            object-fit: cover; /* Сохраняем пропорции */
+            border: 2px solid #ff0000; /* Красная окантовка */
+            border-radius: 5px; /* Немного закругляем углы */
+            padding: 2px; /* Добавляем отступ внутри рамки */
+            background-color: #220000; /* Тёмно-красный фон */
             cursor: pointer; 
-            transition: transform 0.2s; 
+            transition: transform 0.2s, box-shadow 0.2s; 
         }
-        .gallery-row img:hover { transform: scale(1.1); }
+        .gallery-row img:hover { 
+            transform: scale(1.1); 
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7); /* Добавляем свечение при наведении */
+        }
         .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.8); align-items: center; justify-content: center; }
         .overlay img { max-width: 90%; max-height: 90%; }
