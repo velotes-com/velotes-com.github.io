@@ -311,11 +311,12 @@
             });
         });
     </script>
+        <!-- HTML -->
         <!-- Begin Звуковое сопровождение фотографий. Перед закрывающим </body> -->
     <audio id="hover-sound" src="/sounds/hover.mp3"></audio> <!-- Звуковой эффект при наведении мышки на фото в фотогалерее -->
     <audio id="click-sound" src="/sounds/click.mp3"></audio> <!-- Звуковой эффект при клике мышки на фото в фотогалерее -->
     
-    <script>
+    <script> /* JS begin */
         document.querySelectorAll('.gallery-row img').forEach(img => {
             const hoverSound = document.getElementById('hover-sound');
             const clickSound = document.getElementById('click-sound');
@@ -329,7 +330,7 @@
                 clickSound.currentTime = 0;
                 clickSound.play();
             });
-        });
+        }); /* JS end */
     </script>
         <!-- End Звуковое сопровождение фотографий. Перед закрывающим </body> -->
 </body>
