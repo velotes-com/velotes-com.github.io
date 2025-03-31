@@ -163,9 +163,102 @@
         <a href="#photogallery">Фотогалерея</a>
         <a href="#contact">Контакты</a>
     </nav>
+<!--     --------block photogallery -->
     <section id="photogallery">
-       
+        <h2>Фотогалерея</h2>
+        <div class="gallery-container">
+            <div class="gallery-block">
+                <h3>Ремонты бытовой техники</h3>
+                <div class="gallery-row">
+                    <img src="/images/appliance1_thumb.jpg" data-full="/images/appliance1.jpg" alt="Ремонт 1">
+                    <img src="/images/appliance2_thumb.jpg" data-full="/images/appliance2.jpg" alt="Ремонт 2">
+                    <img src="/images/appliance3_thumb.jpg" data-full="/images/appliance3.jpg" alt="Ремонт 3">
+                    <img src="/images/appliance4_thumb.jpg" data-full="/images/appliance4.jpg" alt="Ремонт 4">
+                    <img src="/images/appliance5_thumb.jpg" data-full="/images/appliance5.jpg" alt="Ремонт 5">
+                    <img src="/images/appliance6_thumb.jpg" data-full="/images/appliance6.jpg" alt="Ремонт 6">
+                    <img src="/images/appliance7_thumb.jpg" data-full="/images/appliance7.jpg" alt="Ремонт 7">
+                </div>
+                <div class="gallery-row">
+                    <img src="/images/appliance8_thumb.jpg" data-full="/images/appliance8.jpg" alt="Ремонт 8">
+                    <img src="/images/appliance9_thumb.jpg" data-full="/images/appliance9.jpg" alt="Ремонт 9">
+                    <img src="/images/appliance10_thumb.jpg" data-full="/images/appliance10.jpg" alt="Ремонт 10">
+                    <img src="/images/appliance11_thumb.jpg" data-full="/images/appliance11.jpg" alt="Ремонт 11">
+                    <img src="/images/appliance12_thumb.jpg" data-full="/images/appliance12.jpg" alt="Ремонт 12">
+                    <img src="/images/appliance13_thumb.jpg" data-full="/images/appliance13.jpg" alt="Ремонт 13">
+                    <img src="/images/appliance14_thumb.jpg" data-full="/images/appliance14.jpg" alt="Ремонт 14">
+                </div>
+            </div>
+    
+            <div class="gallery-block">
+                <h3>Ремонты электротранспорта</h3>
+                <div class="gallery-row">
+                    <img src="/images/transport1_thumb.jpg" data-full="/images/transport1.jpg" alt="Транспорт 1">
+                    <img src="/images/transport2_thumb.jpg" data-full="/images/transport2.jpg" alt="Транспорт 2">
+                    <img src="/images/transport3_thumb.jpg" data-full="/images/transport3.jpg" alt="Транспорт 3">
+                    <img src="/images/transport4_thumb.jpg" data-full="/images/transport4.jpg" alt="Транспорт 4">
+                    <img src="/images/transport5_thumb.jpg" data-full="/images/transport5.jpg" alt="Транспорт 5">
+                    <img src="/images/transport6_thumb.jpg" data-full="/images/transport6.jpg" alt="Транспорт 6">
+                    <img src="/images/transport7_thumb.jpg" data-full="/images/transport7.jpg" alt="Транспорт 7">
+                </div>
+                <div class="gallery-row">
+                    <img src="/images/transport8_thumb.jpg" data-full="/images/transport8.jpg" alt="Транспорт 8">
+                    <img src="/images/transport9_thumb.jpg" data-full="/images/transport9.jpg" alt="Транспорт 9">
+                    <img src="/images/transport10_thumb.jpg" data-full="/images/transport10.jpg" alt="Транспорт 10">
+                    <img src="/images/transport11_thumb.jpg" data-full="/images/transport11.jpg" alt="Транспорт 11">
+                    <img src="/images/transport12_thumb.jpg" data-full="/images/transport12.jpg" alt="Транспорт 12">
+                    <img src="/images/transport13_thumb.jpg" data-full="/images/transport13.jpg" alt="Транспорт 13">
+                    <img src="/images/transport14_thumb.jpg" data-full="/images/transport14.jpg" alt="Транспорт 14">
+                </div>
+            </div>
+    
+            <div class="gallery-block">
+                <h3>Дополнительные проекты</h3>
+                <div class="gallery-row">
+                    <img src="/images/project1_thumb.jpg" data-full="/images/project1.jpg" alt="Проект 1">
+                    <img src="/images/project2_thumb.jpg" data-full="/images/project2.jpg" alt="Проект 2">
+                    <img src="/images/project3_thumb.jpg" data-full="/images/project3.jpg" alt="Проект 3">
+                    <img src="/images/project4_thumb.jpg" data-full="/images/project4.jpg" alt="Проект 4">
+                    <img src="/images/project5_thumb.jpg" data-full="/images/project5.jpg" alt="Проект 5">
+                    <img src="/images/project6_thumb.jpg" data-full="/images/project6.jpg" alt="Проект 6">
+                    <img src="/images/project7_thumb.jpg" data-full="/images/project7.jpg" alt="Проект 7">
+                </div>
+                <div class="gallery-row">
+                    <img src="/images/project8_thumb.jpg" data-full="/images/project8.jpg" alt="Проект 8">
+                    <img src="/images/project9_thumb.jpg" data-full="/images/project9.jpg" alt="Проект 9">
+                    <img src="/images/project10_thumb.jpg" data-full="/images/project10.jpg" alt="Проект 10">
+                    <img src="/images/project11_thumb.jpg" data-full="/images/project11.jpg" alt="Проект 11">
+                    <img src="/images/project12_thumb.jpg" data-full="/images/project12.jpg" alt="Проект 12">
+                    <img src="/images/project13_thumb.jpg" data-full="/images/project13.jpg" alt="Проект 13">
+                    <img src="/images/project14_thumb.jpg" data-full="/images/project14.jpg" alt="Проект 14">
+                </div>
+            </div>
+        </div>
+        <div id="fullscreen-overlay" class="overlay">
+            <img id="fullscreen-image" src="" alt="">
+        </div>
     </section>
+    
+    <style>
+    .gallery-container { text-align: center; }
+    .gallery-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .gallery-row img { width: 100px; cursor: pointer; transition: transform 0.2s; }
+    .gallery-row img:hover { transform: scale(1.1); }
+    .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; }
+    .overlay img { max-width: 90%; max-height: 90%; }
+    </style>
+    
+    <script>
+        document.querySelectorAll('.gallery-row img').forEach(img => {
+            img.addEventListener('click', function() {
+                document.getElementById('fullscreen-image').src = this.getAttribute('data-full');
+                document.getElementById('fullscreen-overlay').style.display = 'flex';
+            });
+        });
+        document.getElementById('fullscreen-overlay').addEventListener('click', function() {
+            this.style.display = 'none';
+        });
+    </script>
+<!--     ---------contacts -->
     <section id="contact">
         <h2>Контакты</h2>
         <p>Телефон: +375 (29) 355-11-97
