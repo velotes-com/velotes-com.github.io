@@ -240,8 +240,8 @@
     
     <style>  /* CSS */
         .gallery-container { text-align: center; }
-        .gallery-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; /* Уменьшаем расстояние между фото */
-                     margin-bottom: 15px; /* Добавляем пространство между рядами */}
+        .gallery-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; /* Уменьшаем расстояние между фото */
+                     margin-bottom: 5px; /* Добавляем пространство между рядами */}
         .gallery-row img { 
             width: 90px; /* Чуть уменьшаем ширину */
             height: 80px; /* Немного уменьшаем высоту */
@@ -249,7 +249,7 @@
             border: 2px solid #ff0000; /* Красная окантовка */
             border-radius: 5px; /* Немного закругляем углы */
             padding: 2px; /* Добавляем отступ внутри рамки */
-            flex-shrink: 1; /*Дать возможность изображением сжиматься при нехватке места Добавь это в .gallery-row img: */
+            flex-shrink: 1; /*Дать возможность изображением сжиматься при нехватке места */
             background-color: #220000; /* Тёмно-красный фон */
             cursor: pointer; 
             transition: transform 0.2s, box-shadow 0.2s; 
