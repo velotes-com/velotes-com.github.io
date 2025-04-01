@@ -298,7 +298,7 @@
         <!-- End Звуковое сопровождение фотографий. Перед закрывающим </body> -->
     <script>
         // скрипт для фотогалереи, для облегчения кода
-        function createGallery(folder, totalImages, galleryId, prefix = "") {
+        function createGallery(folder, totalImages, galleryId, prefix = "", suffix = "") {
             const galleryBlock = document.getElementById(galleryId);
             let row = document.createElement("div");
             row.classList.add("gallery-row");
@@ -306,13 +306,13 @@
     
             for (let i = 1; i <= totalImages; i++) {
                 const imgNumber = String(i).padStart(2, '0'); // 01, 02, 03...
-                const imgSrc = `${folder}/${prefix}${imgNumber}.jpg`;
-    
+                const imgSrc = `${folder}/${imgNumber}${suffix}.jpg`; // Теперь будет 01_HAR.jpg, 02_HAR.jpg...
+        
                 const imgElement = document.createElement("img");
                 imgElement.src = imgSrc;
                 imgElement.setAttribute("data-full", imgSrc);
                 imgElement.alt = `Фото ${i}`;
-                
+        
                 row.appendChild(imgElement);
     
                 // После 7-го фото создаём новую строку
@@ -324,9 +324,9 @@
             }
         }
         // Вызываю функцию и указываю папку с фотками и куда вставить 
-        createGallery("/images/photogallery/01_Household_appliance_repairs", 14, "repair-gallery", "NA_");
-        createGallery("/images/photogallery/02_Electric_transport_repairs", 14, "transport-gallery", "NA_");
-        createGallery("/images/photogallery/03_Other_projects", 14, "projects-gallery", "NA_");
+        createGallery("/images/photogallery/01_Household_appliance_repairs", 14, "repair-gallery", "", "_HAR");
+        createGallery("/images/photogallery/02_Electric_transport_repairs", 14, "transport-gallery", "", "_ETR");
+        createGallery("/images/photogallery/03_Other_projects", 14, "projects-gallery", "", "_OP");
     </script>
 
 </body>
