@@ -1,61 +1,217 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Всё как у тебя, без изменений -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow"> <!-- Не индексировать -->
+    <title>Ремонт электротранспорта - Velotes</title>
+    <link rel="icon" type="image/png" href="/images/favicon/favicon.png"> <!-- fiveicon logotype -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Font Awesome -->
+    <style>
+        body {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2, h3 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 3px; /* Растягиваем буквы */
+        }
+        header {
+            background-color: #000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header img {
+            height: 80px;
+        }
+        header h1 {
+            margin: 10px 0 0;
+            font-size: 2.5rem;
+            color: #ff0000;
+            letter-spacing: 2px; /* Растягиваем буквы */
+        }
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            color: #ff0000;
+            letter-spacing: 1.5px; /* Растягиваем буквы */
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 2px; /* Растягиваем буквы */
+        }
+        nav a:hover {
+            color: #ff0000;
+        }
+        section {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        section h2 {
+            color: #ff0000;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        section p, section ul {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        section ul li {
+            background-color: #ffe5e5;
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #ff0000;
+        }
+        .callback-form {
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            text-align: center;
+        }
+        .callback-form h2 {
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+        .form-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .form-link:hover {
+            background-color: #cc0000;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            width: 100%;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        /* Стили для иконок */
+        .contact-icons {
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .contact-icons a {
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .contact-icons i {
+            font-size: 24px;
+            transition: opacity 0.3s ease;
+        }
+        .contact-icons i:hover {
+            opacity: 0.8;
+        }
+        .fa-whatsapp { color: #25D366; }
+        .fa-viber { color: #7360F2; }
+        .fa-telegram { color: #0088CC; }
+        
+        /* Стили для списка ссылок */
+        .link-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .link-list li {
+            margin: 10px 0;
+        }
+        .link-list a {
+            display: block;
+            padding: 12px 15px;
+            background-color: #ffe5e5;
+            color: #333;
+            text-decoration: none;
+            border-left: 4px solid #ff0000;
+            transition: all 0.3s;
+        }
+        .link-list a:hover {
+            background-color: #ffcccc;
+            padding-left: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <img src="/images/logotype/VELOTES_v102_crop_sharpen.png" alt="Логотип Velotes" style="height: 80px;">
+<!--              <img src="https://velotes.com/images/logotype/VELOTES_v102_crop_sharpen.png" style="height: 80px;"> -->
+<!--         https://velotes.com/images/logotype/VELOTES_v102_crop_sharpen.png -->
         <p>Ремонт электротранспорта</p>
     </header>
     <nav>
         <a href="../index.html">Главная</a>
-        <a href="#creative">Моё творчество</a>
+        <a href="#about">Обо мне</a>
+        <a href="/pages/creation.html">Творчество</a>
+        <a href="/pages/photogallery.html">Фотогалерея</a>
         <a href="#contact">Контакты</a>
     </nav>
-
-    <section id="creative">
-        <br><h2>Моё творчество</h2></br>
-        
-        <p>Ниже можно послушать мои музыкальные композиции:</p>
-        <audio controls>
-            <source src="/media/Wanderer_v1.mp3" type="audio/mpeg">
-            Ваш браузер не поддерживает аудиоплеер.
-        </audio>
-        <br><br>
-        <audio controls>
-            <source src="/media/Wanderer_v1.mp3" type="audio/mpeg">
-            Ваш браузер не поддерживает аудиоплеер.
-        </audio>
-
-        <br><br>
-        <p>Также можно посмотреть видео:</p>
-        
-        <!-- Вариант 1: YouTube -->
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/ВАШ_ID_РОЛИКА" 
-                title="YouTube video player" frameborder="0" allowfullscreen>
-        </iframe>
-
-        <br><br>
-
-        <!-- Вариант 2: Видео с сервера -->
-        <!--
-        <video width="100%" height="auto" controls>
-            <source src="/media/myvideo.mp4" type="video/mp4">
-            Ваш браузер не поддерживает видео.
-        </video>
-        -->
+    <section id="about">
+        <br><h2>Мои песни:</h2>
+            <p> </p>
+            <p> </p>
+        </br>
+        <br>
+            <p> </p>
+        </br>
+            <br><p> </p>
+        </br>
     </section>
-
     <section id="services">
-        <!--         <h2> </h2> -->
-        <!--          пока пусто -->
+<!--         <h2> </h2> -->
+<!--          пока пусто -->
     </section>
     <section id="contact">
-        <!-- Контакты оставлены без изменений -->
+        <h2>Контакты</h2>
+        <p>Телефон: +375 (29) 355-11-97
+            <span class="contact-icons">
+                <a href="https://wa.me/375293551197" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="viber://chat?number=375293551197" target="_blank">
+                    <i class="fab fa-viber"></i>
+                </a>
+                <a href="https://t.me/velotes" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </span>
+        </p>
+        <p>Email: velotes@ya.ru</p>
     </section>
     <section class="callback-form">
-        <!-- Обратный звонок оставлен без изменений -->
+        <h2>Заявка на обратный звонок</h2>
+        <a href="https://forms.gle/H95podaSqG37QQ4x9" target="_blank" class="form-link">Заполнить форму</a>
     </section>
     <footer>
         <p>&copy; 2025 Velotes. Все права защищены. Минск.</p>
