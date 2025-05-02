@@ -230,18 +230,14 @@
 }
 
 .play-btn {
-  background-color: #ff0000;           /* Красная рамка и фон */
-  border: 2px solid #ff0000;
-  border-radius: 8px;
-  padding: 10px;
+  background-color: #000;    /* #000; Чёрный фон (было #ff0000) у плеера*/
+  color: #ff0000;                  /* #ff0000; Красный текст или иконка (было #fff) у плеера*/
+  border: none;
+  font-size: 1.2rem;
+  padding: 6px 12px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background 0.3s ease;
-  position: relative;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: background-color 0.3s ease;  
 }
 
 .play-btn:hover {
@@ -288,7 +284,7 @@
   flex-wrap: wrap;
 }
 
-/* .play-btn {
+.play-btn {
   background-color: #ff0000;
   color: #fff;
   border: none;
@@ -297,8 +293,8 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s ease;
-} */
-/*Это выше затрагивает этот же пункт сайта, поэтому оригинал здесь закомментил, а выше этот пункт в полном объёме вместе с плеерами*/
+}
+
 .play-btn:hover {
   background-color: #cc0000;
 }
@@ -322,28 +318,6 @@
 .time {
   min-width: 40px;
   font-size: 0.9rem;
-}
-/* Чёрная внутренняя вставка */
-.play-btn::before {
-  content: '';
-  background-color: #000;
-  border-radius: 4px;
-  position: absolute;
-  width: 80%;
-  height: 80%;
-  z-index: 0;
-}
-
-/* Красный треугольник Play */
-.play-btn::after {
-  content: '';
-  position: relative;
-  z-index: 1;
-  width: 0;
-  height: 0;
-  border-left: 12px solid #ff0000;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
 }
 /*   конец  стилистики плееров Mp3 */
 </style>
