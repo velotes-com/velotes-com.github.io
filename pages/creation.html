@@ -273,6 +273,65 @@
   min-width: 40px;
   font-size: 0.9rem;
 }
+/*     стилистика плееров Mp3 */
+.audio-player {
+  background-color: #fff;
+  border-left: 4px solid #ff0000;
+  padding: 16px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-family: 'Oswald', sans-serif;
+}
+
+.audio-player p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.play-btn {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.play-btn:hover {
+  background-color: #cc0000;
+}
+
+.progress {
+  flex-grow: 2;
+  width: 300px;
+  height: 6px;
+  accent-color: #ff0000;
+}
+
+.progress.tall {
+  height: 12px;
+}
+
+.volume {
+  width: 100px;
+  accent-color: #ff0000;
+}
+
+.time {
+  min-width: 40px;
+  font-size: 0.9rem;
+}
+/*   конец  стилистики плееров Mp3 */
 </style>
 
 <script>
@@ -348,5 +407,50 @@ function formatTime(sec) {
     <footer>
         <p>&copy; 2025 Velotes. Все права защищены. Минск.</p>
     </footer>
+<!-- JavaScript (один раз для всех плееров) -->
+<script>
+function togglePlay(id) {
+  const audio = document.getElementById(id);
+  const btn = audio.nextElementSibling.querySelector('.play-btn');
+  if (audio.paused) {
+    audio.play();
+    btn.textContent = '⏸️';
+  } else {
+    audio.pause();
+    btn.textContent = '▶️';
+  }
+}
+
+function setVolume(id, value) {
+  document.getElementById(id).volume = value;
+}
+
+['track1', 'track2'].forEach(id => {
+  const audio = document.getElementById(id);
+  const index = id.slice(-1);
+  const progress = document.getElementById('progress' + index);
+  const time = document.getElementById('time' + index);
+
+  audio.addEventListener('loadedmetadata', () => {
+    progress.max = audio.duration;
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    progress.value = audio.currentTime;
+    time.textContent = formatTime(audio.currentTime);
+  });
+
+  progress.addEventListener('input', () => {
+    audio.currentTime = progress.value;
+  });
+});
+
+function formatTime(sec) {
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60).toString().padStart(2, '0');
+  return `${m}:${s}`;
+}
+</script>
+<!-- JavaScript (один раз для всех плееров) - Вставь внизу перед </body>: -->
 </body>
 </html>
