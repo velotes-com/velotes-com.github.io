@@ -179,15 +179,147 @@
     </nav>
     <section id="about">
         <br><h2>Мои песни:</h2>
-            <p> </p>
+<!--             <p> </p>
+        
             <p> </p>
         </br>
         <br>
             <p> </p>
         </br>
-            <br><p> </p>
+            <br><p> </p> -->
         </br>
     </section>
+<!--     начало плеера -->
+    <section id="creative">
+  <h2>Моё творчество</h2>
+
+  <!-- Первый трек -->
+  <div class="audio-player">
+    <p>🎵 Композиция 1 — "Название трека"</p>
+    <audio id="track1" src="/media/music1.mp3"></audio>
+    <div class="controls">
+      <button onclick="togglePlay('track1')" class="play-btn">▶️</button>
+      <input type="range" id="progress1" value="0" step="1" class="progress">
+      <span id="time1" class="time">0:00</span>
+      <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track1', this.value)" class="volume">
+    </div>
+  </div>
+
+  <!-- Второй трек -->
+  <div class="audio-player">
+    <p>🎵 Композиция 2 — "Название второго трека"</p>
+    <audio id="track2" src="/media/music2.mp3"></audio>
+    <div class="controls">
+      <button onclick="togglePlay('track2')" class="play-btn">▶️</button>
+      <input type="range" id="progress2" value="0" step="1" class="progress">
+      <span id="time2" class="time">0:00</span>
+      <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track2', this.value)" class="volume">
+    </div>
+  </div>
+</section>
+
+<style>
+.audio-player {
+  background-color: #fff;
+  border-left: 4px solid #ff0000;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Oswald', sans-serif;
+}
+
+.audio-player p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.play-btn {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.play-btn:hover {
+  background-color: #cc0000;
+}
+
+.progress {
+  flex-grow: 2;
+  height: 6px;
+  background-color: #ffe5e5;
+  accent-color: #ff0000;
+  cursor: pointer;
+}
+
+.volume {
+  width: 100px;
+  accent-color: #ff0000;
+}
+
+.time {
+  min-width: 40px;
+  font-size: 0.9rem;
+}
+</style>
+
+<script>
+function togglePlay(id) {
+  const audio = document.getElementById(id);
+  const btn = audio.nextElementSibling.querySelector('.play-btn');
+  if (audio.paused) {
+    audio.play();
+    btn.textContent = '⏸️';
+  } else {
+    audio.pause();
+    btn.textContent = '▶️';
+  }
+}
+
+function setVolume(id, value) {
+  const audio = document.getElementById(id);
+  audio.volume = value;
+}
+
+// Обновление прогресса и времени
+['track1', 'track2'].forEach(id => {
+  const audio = document.getElementById(id);
+  const progress = document.getElementById('progress' + id.slice(-1));
+  const time = document.getElementById('time' + id.slice(-1));
+
+  audio.addEventListener('loadedmetadata', () => {
+    progress.max = audio.duration;
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    progress.value = audio.currentTime;
+    time.textContent = formatTime(audio.currentTime);
+  });
+
+  progress.addEventListener('input', () => {
+    audio.currentTime = progress.value;
+  });
+});
+
+function formatTime(sec) {
+  const minutes = Math.floor(sec / 60);
+  const seconds = Math.floor(sec % 60).toString().padStart(2, '0');
+  return `${minutes}:${seconds}`;
+}
+</script>
+<!--     конец плеера -->
     <section id="services">
 <!--         <h2> </h2> -->
 <!--          пока пусто -->
