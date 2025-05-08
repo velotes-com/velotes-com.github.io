@@ -321,88 +321,47 @@
 }
 /*   конец  стилистики плееров Mp3 */
 </style>
-
-<script>
-function togglePlay(id) {
-  const audio = document.getElementById(id);
-  const btn = audio.nextElementSibling.querySelector('.play-btn');
-  if (audio.paused) {
-    audio.play();
-    btn.textContent = '⏸️';
-  } else {
-    audio.pause();
-    btn.textContent = '▶️';
-  }
-}
-
-function setVolume(id, value) {
-  const audio = document.getElementById(id);
-  audio.volume = value;
-}
-
-// Обновление прогресса и времени
-['track1', 'track2'].forEach(id => {
-  const audio = document.getElementById(id);
-  const progress = document.getElementById('progress' + id.slice(-1));
-  const time = document.getElementById('time' + id.slice(-1));
-
-  audio.addEventListener('loadedmetadata', () => {
-    progress.max = audio.duration;
-  });
-
-  audio.addEventListener('timeupdate', () => {
-    progress.value = audio.currentTime;
-    time.textContent = formatTime(audio.currentTime);
-  });
-
-  progress.addEventListener('input', () => {
-    audio.currentTime = progress.value;
-  });
-});
-
-function formatTime(sec) {
-  const minutes = Math.floor(sec / 60);
-  const seconds = Math.floor(sec % 60).toString().padStart(2, '0');
-  return `${minutes}:${seconds}`;
-}
-</script>
-<!--     конец плеера -->
-    <section id="services">
+<section id="services">
 <!--         <h2> </h2> -->
 <!--          пока пусто -->
-    </section>
-    <section id="contact">
-        <h2>Контакты</h2>
-        <p>Телефон: +375 (29) 355-11-97
-            <span class="contact-icons">
-                <a href="https://wa.me/375293551197" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="viber://chat?number=375293551197" target="_blank">
-                    <i class="fab fa-viber"></i>
-                </a>
-                <a href="https://t.me/velotes" target="_blank">
-                    <i class="fab fa-telegram"></i>
-                </a>
-            </span>
-        </p>
-        <p>Email: velotes@ya.ru</p>
-    </section>
-    <section class="callback-form">
-        <h2>Заявка на обратный звонок</h2>
-        <a href="https://forms.gle/H95podaSqG37QQ4x9" target="_blank" class="form-link">Заполнить форму</a>
-    </section>
-    <footer>
-        <p>&copy; 2025 Velotes. Все права защищены. Минск.</p>
-    </footer>
+</section>
+<section id="contact">
+    <h2>Контакты</h2>
+    <p>Телефон: +375 (29) 355-11-97
+        <span class="contact-icons">
+            <a href="https://wa.me/375293551197" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="viber://chat?number=375293551197" target="_blank">
+                <i class="fab fa-viber"></i>
+            </a>
+            <a href="https://t.me/velotes" target="_blank">
+                <i class="fab fa-telegram"></i>
+            </a>
+        </span>
+    </p>
+    <p>Email: velotes@ya.ru</p>
+</section>
+<section class="callback-form">
+    <h2>Заявка на обратный звонок</h2>
+    <a href="https://forms.gle/H95podaSqG37QQ4x9" target="_blank" class="form-link">Заполнить форму</a>
+</section>
+<footer>
+    <p>&copy; 2025 Velotes. Все права защищены. Минск.</p>
+</footer>
 <!-- JavaScript (один раз для всех плееров) -->
 <script>
 function togglePlay(id) {
   const audio = document.getElementById(id);
   const btn = audio.nextElementSibling.querySelector('.play-btn');
+  
   if (audio.paused) {
-    audio.play();
-    btn.textContent = '⏸️';
+    audio.play().then(() => {
+      btn.textContent = '⏸️';
+    }).catch(error => {
+      console.error('Ошибка воспроизведения:', error);
+      alert('Не удалось воспроизвести аудио. Проверьте консоль для подробностей.');
+    });
   } else {
     audio.pause();
     btn.textContent = '▶️';
@@ -419,12 +378,18 @@ function setVolume(id, value) {
   const progress = document.getElementById('progress' + index);
   const time = document.getElementById('time' + index);
 
+  // Обработчик ошибок
+  audio.addEventListener('error', function() {
+    console.error('Ошибка загрузки аудио:', id, audio.error);
+    time.textContent = 'Ошибка';
+  });
+
   audio.addEventListener('loadedmetadata', () => {
-    progress.max = audio.duration;
+    progress.max = Math.floor(audio.duration);
   });
 
   audio.addEventListener('timeupdate', () => {
-    progress.value = audio.currentTime;
+    progress.value = Math.floor(audio.currentTime);
     time.textContent = formatTime(audio.currentTime);
   });
 
@@ -437,7 +402,8 @@ function formatTime(sec) {
   const m = Math.floor(sec / 60);
   const s = Math.floor(sec % 60).toString().padStart(2, '0');
   return `${m}:${s}`;
-}
+} 
+// <!--     конец плеера -->
 </script>
 <!-- JavaScript (один раз для всех плееров) - Вставь внизу перед </body>: -->
 </body>
