@@ -205,20 +205,21 @@
     </div>
   </div>
 
-<!-- Второй трек -->
-<!--   <div class="audio-player">
+<!-- Третий трек -->
+<div class="audio-player">
     <p>🎵 Композиция 3 (тестовая композиция в виде женского исполнения с немного изменённым текстом) — "Wanderer v3 (Скиталец)"</p>
     <audio id="track3" src="/media/Wanderer_v3.mp3"></audio>
     <div class="controls">
       <button onclick="togglePlay('track3')" class="play-btn">▶️</button>
-      <input type="range" id="progress2" value="0" step="1" class="progress">
+      <input type="range" id="progress3" value="0" step="1" class="progress">
       <span id="time3" class="time">0:00</span>
       <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track3', this.value)" class="volume">
     </div>
-  </div> -->
+</div>
+        
 </section>
 
-<style>
+<style> /*  стилистика плееров Mp3 */
 .audio-player {
   background-color: #fff;
   border-left: 4px solid #ff0000;
@@ -273,66 +274,9 @@
   min-width: 40px;
   font-size: 0.9rem;
 }
-/*     стилистика плееров Mp3 */
-.audio-player {
-  background-color: #fff;
-  border-left: 4px solid #ff0000;
-  padding: 16px;
-  margin: 20px 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  font-family: 'Oswald', sans-serif;
-}
-
-.audio-player p {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  color: #000;
-}
-
-.controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.play-btn {
-  background-color: #ff0000;
-  color: #fff;
-  border: none;
-  font-size: 1.2rem;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.play-btn:hover {
-  background-color: #cc0000;
-}
-
-.progress {
-  flex-grow: 2;
-  width: 300px;
-  height: 6px;
-  accent-color: #ff0000;
-}
-
-.progress.tall {
-  height: 12px;
-}
-
-.volume {
-  width: 100px;
-  accent-color: #ff0000;
-}
-
-.time {
-  min-width: 40px;
-  font-size: 0.9rem;
-}
-/*   конец  стилистики плееров Mp3 */
+/*  конец  стилистики плееров Mp3 */
 </style>
+    
 <section id="services">
 <!--         <h2> </h2> -->
 <!--          пока пусто -->
