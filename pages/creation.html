@@ -340,7 +340,7 @@ function setVolume(id, value) {
   document.getElementById(id).volume = value;
 }
 
-['track1', 'track2', 'track3'].forEach(id => {
+['track1', 'track2', 'track3', 'track4'].forEach(id => {
   const audio = document.getElementById(id);
   const index = id.slice(-1);
   const progress = document.getElementById('progress' + index);
