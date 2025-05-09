@@ -228,6 +228,18 @@
         <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track4', this.value)" class="volume">
     </div>
 </div>
+
+<!-- Пятый трек -->
+<!--<div class="audio-player">
+    <p>🎵 Композиция 5 — (про дроны)"</p>
+    <audio id="track5" src="/media/Drone_v1.mp3"></audio>
+    <div class="controls">
+        <button onclick="togglePlay('track5')" class="play-btn">▶️</button>
+        <input type="range" id="progress4" value="0" step="1" class="progress">
+        <span id="time5" class="time">0:00</span>
+        <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track5', this.value)" class="volume">
+    </div>
+</div> -->
         
 </section>
 
@@ -340,7 +352,7 @@ function setVolume(id, value) {
   document.getElementById(id).volume = value;
 }
 
-['track1', 'track2', 'track3', 'track4'].forEach(id => {
+['track1', 'track2', 'track3', 'track4', 'track5'].forEach(id => {
   const audio = document.getElementById(id);
   const index = id.slice(-1);
   const progress = document.getElementById('progress' + index);
