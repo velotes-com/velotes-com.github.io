@@ -240,6 +240,30 @@
         <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track5', this.value)" class="volume">
     </div>
 </div>
+
+<!-- Шестой трек -->
+<div class="audio-player">
+    <p>🎵 Композиция 6 — "Poem_-_My_Way" (Стихотворение - Свой путь (v1))</p>
+    <audio id="track6" src="/media/Poem_-_My_Way_(v1).mp3"></audio>
+    <div class="controls">
+        <button onclick="togglePlay('track6')" class="play-btn">▶️</button>
+        <input type="range" id="progress6" value="0" step="1" class="progress">
+        <span id="time6" class="time">0:00</span>
+        <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track6', this.value)" class="volume">
+    </div>
+</div>
+
+<!-- Седьмой трек -->
+<div class="audio-player">
+    <p>🎵 Композиция 7 — "Poem_-_My_Way" (Стихотворение - Свой путь (v2))</p>
+    <audio id="track7" src="/media/Poem_-_My_Way_(v2).mp3"></audio>
+    <div class="controls">
+        <button onclick="togglePlay('track7')" class="play-btn">▶️</button>
+        <input type="range" id="progress7" value="0" step="1" class="progress">
+        <span id="time7" class="time">0:00</span>
+        <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track7', this.value)" class="volume">
+    </div>
+</div>
         
 </section>
 
@@ -356,7 +380,7 @@ function setVolume(id, value) {
   document.getElementById(id).volume = value;
 }
 
-['track1', 'track2', 'track3', 'track4', 'track5'].forEach(id => {
+['track1', 'track2', 'track3', 'track4', 'track5', 'track6', 'track7'].forEach(id => {
   const audio = document.getElementById(id);
   const index = id.slice(-1);
   const progress = document.getElementById('progress' + index);
