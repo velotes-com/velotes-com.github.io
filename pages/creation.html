@@ -298,6 +298,68 @@
     container.insertAdjacentHTML("beforeend", html);
   });
 </script>
-<!-- JavaScript (один раз для всех плееров) - Вставь внизу перед </body>: -->
+    
+<script>
+  const players = {}; // Храним состояния всех плееров
+
+  function togglePlay(id) {
+    const audio = document.getElementById(id);
+
+    // Если другой трек играет — остановим его
+    Object.values(players).forEach(player => {
+      if (player !== audio && !player.paused) {
+        player.pause();
+      }
+    });
+
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+
+    players[id] = audio;
+  }
+
+  function setVolume(id, value) {
+    const audio = document.getElementById(id);
+    if (audio) {
+      audio.volume = value;
+    }
+  }
+
+  // Обновление прогресс-бара и времени
+  document.addEventListener("DOMContentLoaded", () => {
+    const updateInterval = setInterval(() => {
+      document.querySelectorAll("audio").forEach((audio, index) => {
+        const progress = document.getElementById("progress" + (index + 1));
+        const time = document.getElementById("time" + (index + 1));
+
+        if (audio && progress && time) {
+          progress.max = Math.floor(audio.duration || 0);
+          progress.value = Math.floor(audio.currentTime || 0);
+          time.textContent = formatTime(audio.currentTime);
+        }
+      });
+    }, 500);
+
+    // Реакция на ручное перематывание
+    document.querySelectorAll("input.progress").forEach((slider, index) => {
+      slider.addEventListener("input", () => {
+        const audio = document.getElementById("track" + (index + 1));
+        if (audio) {
+          audio.currentTime = slider.value;
+        }
+      });
+    });
+
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60);
+      return `${m}:${s < 10 ? "0" + s : s}`;
+    }
+  });
+</script>
+
 </body>
 </html>
