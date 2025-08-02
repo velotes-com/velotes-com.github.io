@@ -178,94 +178,31 @@
         <a href="#contact">Контакты</a>
     </nav>
 <!--     начало плеера -->
-    <section id="creative">
-  <h2>Мои песни:</h2>
 
-  <!-- Первый трек -->
-  <div class="audio-player">
-    <p>🎵 Композиция 1 — "Wanderer v1 (Скиталец)"</p>
-    <audio id="track1" src="/media/Wanderer_v1_(+1'2db).mp3"></audio>
-    <div class="controls">
-      <button onclick="togglePlay('track1')" class="play-btn">▶️</button>
-      <input type="range" id="progress1" value="0" step="1" class="progress">
-      <span id="time1" class="time">0:00</span>
-      <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track1', this.value)" class="volume">
-    </div>
-  </div>
+<script>
+  const tracks = [
+    { id: 'track1', title: '🎵 Композиция 1 — "Wanderer v1 (Скиталец)"', src: '/media/Wanderer_v1_(+1'2db).mp3' },
+    { id: 'track2', title: '🎵 Композиция 2 — "Wanderer v2 (Скиталец)"', src: '/media/Wanderer_v2_(+1'2db).mp3' }
+  ];
 
-  <!-- Второй трек -->
-  <div class="audio-player">
-    <p>🎵 Композиция 2 — "Wanderer v2 (Скиталец)"</p>
-    <audio id="track2" src="/media/Wanderer_v2_(+1'2db).mp3"></audio>
-    <div class="controls">
-      <button onclick="togglePlay('track2')" class="play-btn">▶️</button>
-      <input type="range" id="progress2" value="0" step="1" class="progress">
-      <span id="time2" class="time">0:00</span>
-      <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track2', this.value)" class="volume">
-    </div>
-  </div>
+  const container = document.getElementById("playlist");
 
-<!-- Третий трек -->
-<div class="audio-player">
-    <p>🎵 Композиция 3 — (femail song, text correction) — "Wanderer v3 (Скиталец)"</p>
-    <audio id="track3" src="/media/Wanderer_v3.mp3"></audio>
-    <div class="controls">
-      <button onclick="togglePlay('track3')" class="play-btn">▶️</button>
-      <input type="range" id="progress3" value="0" step="1" class="progress">
-      <span id="time3" class="time">0:00</span>
-      <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track3', this.value)" class="volume">
-    </div>
-</div>
+  tracks.forEach((track, index) => {
+    const html = `
+      <div class="audio-player">
+        <p>${track.title}</p>
+        <audio id="${track.id}" src="${track.src}"></audio>
+        <div class="controls">
+          <button onclick="togglePlay('${track.id}')" class="play-btn">▶️</button>
+          <input type="range" id="progress${index+1}" value="0" step="1" class="progress">
+          <span id="time${index+1}" class="time">0:00</span>
+          <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('${track.id}', this.value)" class="volume">
+        </div>
+      </div>`;
+    container.insertAdjacentHTML("beforeend", html);
+  });
+</script>
 
-<!-- Четвертый трек -->
-<div class="audio-player">
-    <p>🎵 Композиция 4 — (femail song, text correction) — "Wanderer v4 (Скиталец)"</p>
-    <audio id="track4" src="/media/Wanderer_v4.mp3"></audio>
-    <div class="controls">
-        <button onclick="togglePlay('track4')" class="play-btn">▶️</button>
-        <input type="range" id="progress4" value="0" step="1" class="progress">
-        <span id="time4" class="time">0:00</span>
-        <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track4', this.value)" class="volume">
-    </div>
-</div>
-
-<!-- Пятый трек -->
-<div class="audio-player">
-    <p>🎵 Композиция 5 — "Твои бездонные глаза..." (стихотворение)</p>
-    <audio id="track5" src="/media/Your_bottomless_eyes_v2.mp3"></audio>
-    <div class="controls">
-        <button onclick="togglePlay('track5')" class="play-btn">▶️</button>
-        <input type="range" id="progress5" value="0" step="1" class="progress">
-        <span id="time5" class="time">0:00</span>
-        <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track5', this.value)" class="volume">
-    </div>
-</div>
-
-<!-- Шестой трек -->
-<div class="audio-player">
-    <p>🎵 Композиция 6 — "Poem_-_My_Way" (Стихотворение - Свой путь (v1))</p>
-    <audio id="track6" src="/media/Poem_-_My_Way_(v1).mp3"></audio>
-    <div class="controls">
-        <button onclick="togglePlay('track6')" class="play-btn">▶️</button>
-        <input type="range" id="progress6" value="0" step="1" class="progress">
-        <span id="time6" class="time">0:00</span>
-        <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track6', this.value)" class="volume">
-    </div>
-</div>
-
-<!-- Седьмой трек -->
-<div class="audio-player">
-    <p>🎵 Композиция 7 — "Poem_-_My_Way" (Стихотворение - Свой путь (v2))</p>
-    <audio id="track7" src="/media/Poem_-_My_Way_(v2).mp3"></audio>
-    <div class="controls">
-        <button onclick="togglePlay('track7')" class="play-btn">▶️</button>
-        <input type="range" id="progress7" value="0" step="1" class="progress">
-        <span id="time7" class="time">0:00</span>
-        <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('track7', this.value)" class="volume">
-    </div>
-</div>
-        
-</section>
 
 <style> /*  стилистика плееров Mp3 */
 .audio-player {
