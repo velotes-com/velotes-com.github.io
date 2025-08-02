@@ -275,61 +275,6 @@
 </footer>
 <!-- JavaScript (один раз для всех плееров) -->
 <script>
-function togglePlay(id) {
-  const audio = document.getElementById(id);
-  const btn = audio.nextElementSibling.querySelector('.play-btn');
-  
-  if (audio.paused) {
-    audio.play().then(() => {
-      btn.textContent = '⏸️';
-    }).catch(error => {
-      console.error('Ошибка воспроизведения:', error);
-      alert('Не удалось воспроизвести аудио. Проверьте консоль для подробностей.');
-    });
-  } else {
-    audio.pause();
-    btn.textContent = '▶️';
-  }
-}
-
-function setVolume(id, value) {
-  document.getElementById(id).volume = value;
-}
-
-['track1', 'track2', 'track3', 'track4', 'track5', 'track6', 'track7'].forEach(id => {
-  const audio = document.getElementById(id);
-  const index = id.slice(-1);
-  const progress = document.getElementById('progress' + index);
-  const time = document.getElementById('time' + index);
-
-  // Обработчик ошибок
-  audio.addEventListener('error', function() {
-    console.error('Ошибка загрузки аудио:', id, audio.error);
-    time.textContent = 'Ошибка';
-  });
-
-  audio.addEventListener('loadedmetadata', () => {
-    progress.max = Math.floor(audio.duration);
-  });
-
-  audio.addEventListener('timeupdate', () => {
-    progress.value = Math.floor(audio.currentTime);
-    time.textContent = formatTime(audio.currentTime);
-  });
-
-  progress.addEventListener('input', () => {
-    audio.currentTime = progress.value;
-  });
-});
-
-function formatTime(sec) {
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60).toString().padStart(2, '0');
-  return `${m}:${s}`;
-} 
-// <!--     конец плеера -->
-</script>
-<script>
   const tracks = [
     { id: 'track1', title: '🎵 Композиция 1 — "Wanderer v1 (Скиталец)"', src: '/media/Wanderer_v1_(+1'2db).mp3' },
     { id: 'track2', title: '🎵 Композиция 2 — "Wanderer v2 (Скиталец)"', src: '/media/Wanderer_v2_(+1'2db).mp3' }
