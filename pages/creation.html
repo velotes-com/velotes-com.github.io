@@ -300,7 +300,7 @@
     { id: 'track22', title: '🎵 "Белый шум"', src: '/media/media_other/Белый шум v1.mp3' },
     { id: 'track23', title: '🎵 "Натёр с ладошек ручничок"', src: '/media/media_other/Натёр с ладошек ручничок.mp3' },
     { id: 'track24', title: '🎵 "Я думаю о ней..."', src: '/media/media_other/Я думаю о ней....mp3' },
-      
+    // <hr> после этого
     
   ];
 
@@ -320,7 +320,7 @@
       </div>`;
     container.insertAdjacentHTML("beforeend", html);
       
-      if ([21, 24].includes(index)) {
+      if ([21, 22].includes(index)) {
     container.insertAdjacentHTML("beforeend", `<hr class="track-divider">`);
   }
   });
