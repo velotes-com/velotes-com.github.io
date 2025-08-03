@@ -319,6 +319,10 @@
         </div>
       </div>`;
     container.insertAdjacentHTML("beforeend", html);
+      
+      if ([21, 24].includes(index)) {
+    container.insertAdjacentHTML("beforeend", `<hr class="track-divider">`);
+  }
   });
 </script>
     
