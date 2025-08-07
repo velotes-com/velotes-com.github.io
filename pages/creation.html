@@ -311,24 +311,41 @@
 
   const container = document.getElementById("playlist");
 
-  tracks.forEach((track, index) => {
-    const html = `
-      <div class="audio-player">
-        <p>${track.title}</p>
-        <audio id="${track.id}" src="${track.src}"></audio>
-        <div class="controls">
-          <button onclick="togglePlay('${track.id}')" class="play-btn">▶️</button>
-          <input type="range" id="progress${index+1}" value="0" step="1" class="progress">
-          <span id="time${index+1}" class="time">0:00</span>
-          <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('${track.id}', this.value)" class="volume">
-        </div>
-      </div>`;
-    container.insertAdjacentHTML("beforeend", html);
-      
-      if ([19, 22].includes(index)) {
+tracks.forEach((track, index) => {
+  const html = `
+    <div class="audio-player">
+      <p>${track.title}</p>
+      <audio id="${track.id}" src="${track.src}"></audio>
+      <div class="controls">
+        <button onclick="togglePlay('${track.id}')" class="play-btn">▶️</button>
+        <input type="range" id="progress${index + 1}" value="0" step="1" class="progress">
+        <span id="time${index + 1}" class="time">0:00</span>
+        <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('${track.id}', this.value)" class="volume">
+      </div>
+    </div>`;
+
+    progressSlider.addEventListener("touchstart", (e) => {
+      e.preventDefault(); // Отключает "залипание"
+    }, { passive: false });
+    
+  container.insertAdjacentHTML("beforeend", html);
+
+  // === ➕ Повесим слушатель сразу после вставки ===
+  setTimeout(() => {
+    const progressSlider = document.getElementById("progress" + (index + 1));
+    const audio = document.getElementById(track.id);
+    if (progressSlider && audio) {
+      progressSlider.addEventListener("input", () => {
+        audio.currentTime = progressSlider.value;
+      });
+    }
+  }, 0);
+
+  if ([19, 22].includes(index)) {
     container.insertAdjacentHTML("beforeend", `<hr class="track-divider">`);
   }
-  });
+});
+
 </script>
     
 <script>
