@@ -338,88 +338,77 @@
     
   ];
 
-  const container = document.getElementById("playlist");
+const container = document.getElementById("playlist");
 
-  tracks.forEach((track, index) => {
-    const html = `
-      <div class="audio-player">
-        <p>${track.title}</p>
-        <audio id="${track.id}" src="${track.src}"></audio>
-        <div class="controls">
-          <button onclick="togglePlay('${track.id}')" class="play-btn">▶️</button>
-          <input type="range" id="progress${index+1}" value="0" step="1" class="progress">
-          <span id="time${index+1}" class="time">0:00</span>
-          <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume('${track.id}', this.value)" class="volume">
-        </div>
-      </div>`;
-    container.insertAdjacentHTML("beforeend", html);
-      
-      if ([15, 36].includes(index)) {
+tracks.forEach((track, index) => {
+  const html = `
+    <div class="audio-player">
+      <p>${track.title}</p>
+      <audio id="${track.id}" src="${track.src}" preload="metadata"></audio>
+      <div class="controls">
+        <button onclick="togglePlay('${track.id}')" class="play-btn">▶️</button>
+        <input type="range" class="progress" data-audio="${track.id}" value="0" step="1">
+        <span class="time" data-audio="${track.id}">0:00</span>
+        <input type="range" min="0" max="1" step="0.01" value="1" data-volume="${track.id}" class="volume">
+      </div>
+    </div>`;
+  container.insertAdjacentHTML("beforeend", html);
+  
+  if ([14, 35].includes(index)) {  // индексы 15 и 36 (нумерация с 0)
     container.insertAdjacentHTML("beforeend", `<hr class="track-divider">`);
   }
+});
+
+// Глобальные функции
+const players = {};
+function togglePlay(id) {
+  const audio = document.getElementById(id);
+  Object.values(players).forEach(player => {
+    if (player !== audio && !player.paused) player.pause();
   });
-</script>
-    
-<script>
-  const players = {}; // Храним состояния всех плееров
+  if (audio.paused) audio.play(); else audio.pause();
+  players[id] = audio;
+}
 
-  function togglePlay(id) {
-    const audio = document.getElementById(id);
+function setVolume(id, value) {
+  document.getElementById(id).volume = value;
+}
 
-    // Если другой трек играет — остановим его
-    Object.values(players).forEach(player => {
-      if (player !== audio && !player.paused) {
-        player.pause();
+// Инициализация после загрузки
+document.addEventListener("DOMContentLoaded", () => {
+  // Обработчики для ВСЕХ ползунков по data-атрибутам
+  document.querySelectorAll('.progress').forEach(slider => {
+    slider.addEventListener('input', () => {
+      const audio = document.querySelector(`audio[data-id="${slider.dataset.audio}"]`); // НОВОЕ! Правильная привязка
+      if (audio) audio.currentTime = slider.value;
+    });
+  });
+
+  document.querySelectorAll('.volume').forEach(slider => {
+    slider.addEventListener('input', () => {
+      document.getElementById(slider.dataset.volume).volume = slider.value;
+    });
+  });
+
+  // Обновление прогресса (раз в 250мс для скорости)
+  setInterval(() => {
+    document.querySelectorAll('audio').forEach(audio => {
+      const progress = document.querySelector(`.progress[data-audio="${audio.id}"]`);
+      const time = document.querySelector(`.time[data-audio="${audio.id}"]`);
+      if (progress && time) {
+        progress.max = Math.floor(audio.duration || 0);
+        progress.value = Math.floor(audio.currentTime || 0);
+        time.textContent = formatTime(audio.currentTime);
       }
     });
+  }, 250);
+});
 
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-
-    players[id] = audio;
-  }
-
-  function setVolume(id, value) {
-    const audio = document.getElementById(id);
-    if (audio) {
-      audio.volume = value;
-    }
-  }
-
-  // Обновление прогресс-бара и времени
-  document.addEventListener("DOMContentLoaded", () => {
-    const updateInterval = setInterval(() => {
-      document.querySelectorAll("audio").forEach((audio, index) => {
-        const progress = document.getElementById("progress" + (index + 1));
-        const time = document.getElementById("time" + (index + 1));
-
-        if (audio && progress && time) {
-          progress.max = Math.floor(audio.duration || 0);
-          progress.value = Math.floor(audio.currentTime || 0);
-          time.textContent = formatTime(audio.currentTime);
-        }
-      });
-    }, 500);
-
-    // Реакция на ручное перематывание
-    document.querySelectorAll("input.progress").forEach((slider, index) => {
-      slider.addEventListener("input", () => {
-        const audio = document.getElementById("track" + (index + 1));
-        if (audio) {
-          audio.currentTime = slider.value;
-        }
-      });
-    });
-
-    function formatTime(seconds) {
-      const m = Math.floor(seconds / 60);
-      const s = Math.floor(seconds % 60);
-      return `${m}:${s < 10 ? "0" + s : s}`;
-    }
-  });
+function formatTime(seconds) {
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${s < 10 ? "0" + s : s}`;
+}
 </script>
 
 </body>
