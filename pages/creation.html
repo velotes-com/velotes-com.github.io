@@ -167,34 +167,6 @@
             margin: 20px 0;
             opacity: 0.5;
         }
-        /* Скрыть нативные контролы аудио */
-        .audio-player audio { display: none; }
-        
-        /* Оптимизация ползунков */
-        .progress, .volume {
-          -webkit-appearance: none;
-          appearance: none;
-          background: #ffe5e5;
-          accent-color: #ff0000;
-          cursor: pointer;
-          touch-action: manipulation; /* Мобильные: быстрее отклик */
-          will-change: transform; /* GPU ускорение */
-        }
-        .progress::-webkit-slider-thumb, .volume::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
-          height: 16px;
-          width: 16px;
-          background: #ff0000;
-          border-radius: 50%;
-          cursor: pointer;
-        }
-        
-        /* Lazy loading + меньше теней */
-        .audio-player {
-          contain: layout style; /* Ограничить перерисовку */
-          will-change: transform;
-        }
     </style>
 </head>
 <body>
@@ -390,7 +362,6 @@ tracks.forEach((track, index) => {
 
 const players = {};
 let isDragging = false; // ← КЛЮЧЕВОЕ: флаг перетаскивания
-let rafId; // Для requestAnimationFrame
 
 function togglePlay(id) {
   const audio = document.getElementById(id);
@@ -427,34 +398,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Запуск плавного обновления 60fps
-function updateProgress() {
-  if (!isDragging) {
-    document.querySelectorAll('audio').forEach(audio => {
-      if (!audio.paused && !audio.ended) { // Только играющие треки
+  // Обновление ПРЯМО ТОЛЬКО если НЕ перетаскивают!
+  setInterval(() => {
+    if (!isDragging) {
+      document.querySelectorAll('audio').forEach(audio => {
         const progress = document.querySelector(`.progress[data-audio="${audio.id}"]`);
         const timeEl = document.querySelector(`.time[data-audio="${audio.id}"]`);
-        if (progress && timeEl) {
-          const duration = audio.duration || 100;
-          progress.max = Math.floor(duration);
-          progress.value = Math.floor(audio.currentTime);
+        if (progress && timeEl && !isDragging) {
+          progress.max = Math.floor(audio.duration || 100);
+          progress.value = Math.floor(audio.currentTime || 0);
           timeEl.textContent = formatTime(audio.currentTime);
         }
-      }
-    });
-  }
-  rafId = requestAnimationFrame(updateProgress); // Рекурсия для 60fps
-}
-
-rafId = requestAnimationFrame(updateProgress); // Первый запуск
-
-// Авто-пауза при скрытии вкладки (экономия батареи)
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    cancelAnimationFrame(rafId);
-  } else {
-    rafId = requestAnimationFrame(updateProgress);
-  }
+      });
+    }
+  }, 250);
 });
 
 function formatTime(seconds) {
