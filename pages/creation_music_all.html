@@ -347,20 +347,21 @@ tracks.forEach((track, index) => {
       <audio id="${track.id}" src="${track.src}" preload="metadata"></audio>
       <div class="controls">
         <button onclick="togglePlay('${track.id}')" class="play-btn">▶️</button>
-        <input type="range" class="progress" data-audio="${track.id}" value="0" step="1">
+        <input type="range" class="progress" data-audio="${track.id}" value="0" step="1" min="0">
         <span class="time" data-audio="${track.id}">0:00</span>
         <input type="range" min="0" max="1" step="0.01" value="1" data-volume="${track.id}" class="volume">
       </div>
     </div>`;
   container.insertAdjacentHTML("beforeend", html);
   
-  if ([14, 35].includes(index)) {  // индексы 15 и 36 (нумерация с 0)
+  if ([14, 36].includes(index)) {
     container.insertAdjacentHTML("beforeend", `<hr class="track-divider">`);
   }
 });
 
-// Глобальные функции
 const players = {};
+let isDragging = false; // ← КЛЮЧЕВОЕ: флаг перетаскивания
+
 function togglePlay(id) {
   const audio = document.getElementById(id);
   Object.values(players).forEach(player => {
@@ -370,17 +371,23 @@ function togglePlay(id) {
   players[id] = audio;
 }
 
-function setVolume(id, value) {
-  document.getElementById(id).volume = value;
-}
-
-// Инициализация после загрузки
+// Обработчики перетаскивания (input + mouse/touch события)
 document.addEventListener("DOMContentLoaded", () => {
-  // Обработчики для ВСЕХ ползунков по data-атрибутам
   document.querySelectorAll('.progress').forEach(slider => {
+    const audioId = slider.dataset.audio;
+    const audio = document.getElementById(audioId);
+    
+    // Начало перетаскивания
+    slider.addEventListener('mousedown', () => isDragging = true);
+    slider.addEventListener('touchstart', () => isDragging = true);
+    
+    // Конец перетаскивания
+    slider.addEventListener('mouseup', () => { isDragging = false; });
+    slider.addEventListener('touchend', () => { isDragging = false; });
+    
+    // Изменение времени
     slider.addEventListener('input', () => {
-      const audio = document.querySelector(`audio[data-id="${slider.dataset.audio}"]`); // НОВОЕ! Правильная привязка
-      if (audio) audio.currentTime = slider.value;
+      audio.currentTime = slider.value;
     });
   });
 
@@ -390,24 +397,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Обновление прогресса (раз в 250мс для скорости)
+  // Обновление ПРЯМО ТОЛЬКО если НЕ перетаскивают!
   setInterval(() => {
-    document.querySelectorAll('audio').forEach(audio => {
-      const progress = document.querySelector(`.progress[data-audio="${audio.id}"]`);
-      const time = document.querySelector(`.time[data-audio="${audio.id}"]`);
-      if (progress && time) {
-        progress.max = Math.floor(audio.duration || 0);
-        progress.value = Math.floor(audio.currentTime || 0);
-        time.textContent = formatTime(audio.currentTime);
-      }
-    });
+    if (!isDragging) {
+      document.querySelectorAll('audio').forEach(audio => {
+        const progress = document.querySelector(`.progress[data-audio="${audio.id}"]`);
+        const timeEl = document.querySelector(`.time[data-audio="${audio.id}"]`);
+        if (progress && timeEl && !isDragging) {
+          progress.max = Math.floor(audio.duration || 100);
+          progress.value = Math.floor(audio.currentTime || 0);
+          timeEl.textContent = formatTime(audio.currentTime);
+        }
+      });
+    }
   }, 250);
 });
 
 function formatTime(seconds) {
   const m = Math.floor(seconds / 60);
   const s = Math.floor(seconds % 60);
-  return `${m}:${s < 10 ? "0" + s : s}`;
+  return `${m}:${s < 10 ? '0' + s : s}`;
 }
 </script>
 
